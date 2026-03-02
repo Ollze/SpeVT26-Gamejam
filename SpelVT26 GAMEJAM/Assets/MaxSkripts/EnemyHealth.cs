@@ -1,8 +1,10 @@
+using TMPro;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] float health, maxHealth = 5f;
+    public TextMeshProUGUI textScore;
 
     private void Start()
     {
