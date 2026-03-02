@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   health: 0
-  maxHealth: 5
+  maxHealth: 50
 --- !u!61 &2242374592700391371
 BoxCollider2D:
   m_ObjectHideFlags: 0
