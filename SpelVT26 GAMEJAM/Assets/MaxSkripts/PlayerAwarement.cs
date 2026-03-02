@@ -7,16 +7,28 @@ public class PlayerAwarement : MonoBehaviour
     public Vector2 DirectionToPlayer { get; private set; }
 
     [SerializeField]
-    private float _playerAwernessDistance;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private float playerAwernessDistance;
+
+    private Transform player;
+
+    private void Awake()
     {
-        
+        player = FindObjectOfType<PlayerMain>().transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Vector2 enemyToPlayerVector = player.position - transform.position;
+        DirectionToPlayer = enemyToPlayerVector.normalized;
+
+        if (enemyToPlayerVector.magnitude <= playerAwernessDistance)
+        {
+            AwareOfPlayer = true;
+        }
+        else
+        {
+            AwareOfPlayer = false;
+        }
     }
 }
