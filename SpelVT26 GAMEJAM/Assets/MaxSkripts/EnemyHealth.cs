@@ -20,8 +20,13 @@ public class EnemyHealth : MonoBehaviour
     }
     public void EnemyDied()
     {
-        
-        
-        Destroy(gameObject)
+
+
+        Destroy(gameObject);
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        TakeDamage(1f);
     }
 }
