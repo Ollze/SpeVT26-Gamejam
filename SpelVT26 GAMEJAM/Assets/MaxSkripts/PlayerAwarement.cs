@@ -7,7 +7,7 @@ public class PlayerAwarement : MonoBehaviour
     public Vector2 DirectionToPlayer { get; private set; }
 
     [SerializeField]
-    private
+    private float _playerAwernessDistance;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
