@@ -20,8 +20,8 @@ public class EnemyHealth : MonoBehaviour
     }
     public void EnemyDied()
     {
-        
-        
-        Destroy(gameObject)
+
+
+        Destroy(gameObject);
     }
 }
