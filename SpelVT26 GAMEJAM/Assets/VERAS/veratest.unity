@@ -349,6 +349,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4358643652960007469, guid: 47f9d6c33ac27df4e85f6da0014b2a48, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358643652960007469, guid: 47f9d6c33ac27df4e85f6da0014b2a48, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6124882743622339557, guid: 47f9d6c33ac27df4e85f6da0014b2a48, type: 3}
       propertyPath: m_Name
       value: Player
