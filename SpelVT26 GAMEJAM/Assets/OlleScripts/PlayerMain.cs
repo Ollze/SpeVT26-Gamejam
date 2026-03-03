@@ -14,9 +14,12 @@ public class PlayerMain : MonoBehaviour
     public float Currency = 0;
     bool manaOverheat;
     bool isshooting;
+    public float coinGain = 1f;
     void Start()
     {
+        MaxMana = 100f;
         CurrentMana += MaxMana;
+        coinGain = 1f;
     }
 
     // Update is called once per frame
@@ -62,7 +65,7 @@ public class PlayerMain : MonoBehaviour
         if (collision.collider.CompareTag("Coin"))
         {
             Destroy(collision.collider.gameObject);
-            Currency += 1f;
+            Currency += coinGain;
             print("Current points/coins " + Currency);
         }
     }

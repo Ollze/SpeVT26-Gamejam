@@ -38,4 +38,9 @@ public class ShopUppgrades : MonoBehaviour
     {
         playerCode.MaxMana += 100f;
     }
+
+    public void CoinUppgrade()
+    {
+        playerCode.coinGain += 1f;
+    }
 }
