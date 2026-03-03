@@ -11,6 +11,7 @@ public class PlayerMain : MonoBehaviour
     public float CurrentMana;
     public Slider Mana;
     public Slider playerHealth;
+    public float Currency = 0;
     bool manaOverheat;
     bool isshooting;
     void Start()
@@ -55,5 +56,14 @@ public class PlayerMain : MonoBehaviour
         shootParticles.Play();
         CurrentMana += -15f * Time.deltaTime;
         isshooting = true;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Coin"))
+        {
+            Destroy(collision.collider.gameObject);
+            Currency += 1f;
+            print("Current points/coins " + Currency);
+        }
     }
 }

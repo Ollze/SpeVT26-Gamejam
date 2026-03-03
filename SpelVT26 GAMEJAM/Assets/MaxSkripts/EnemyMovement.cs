@@ -9,6 +9,8 @@ public class EnemyMovement : MonoBehaviour
 
     [Header("Health Settings")]
     [SerializeField] private float maxHealth = 50f;
+
+    public GameObject CoinObject;
     private float health;
 
     private Rigidbody2D rb;
@@ -88,6 +90,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void EnemyDied()
     {
+        Instantiate(CoinObject, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
