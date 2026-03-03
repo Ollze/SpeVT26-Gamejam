@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class WaveController : MonoBehaviour
 {
+    private EnemySpawner spawnerScript;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
