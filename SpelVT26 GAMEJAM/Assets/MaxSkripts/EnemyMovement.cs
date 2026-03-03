@@ -17,6 +17,10 @@ public class EnemyMovement : MonoBehaviour
     private PlayerAwarement playerAwarenessController;
     private Vector2 targetDirection;
 
+    [Header("Enemy Type")]
+    public bool enemy1;
+    public bool enemy2;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -25,6 +29,22 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
+        
+        if (enemy1 || !enemy1 && !enemy2)
+        {
+            maxHealth = 50f;
+        }
+
+        if (enemy2)
+        {
+            maxHealth = 100f;
+            speed = 0.5f;
+        }
+
+
+
+
+
         health = maxHealth;
     }
 
