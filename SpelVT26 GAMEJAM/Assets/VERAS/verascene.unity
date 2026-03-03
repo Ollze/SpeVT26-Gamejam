@@ -303,6 +303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c885e1e1dd898144788498e57046fb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  player: {fileID: 1707206155}
+  playerCode: {fileID: 1707206156}
 --- !u!1 &271190099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,13 +1293,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1707206155}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 235036239}
+        m_TargetAssemblyTypeName: ShopUppgrades, Assembly-CSharp
+        m_MethodName: SPDuppgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1743,6 +1745,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6124882743622339557, guid: 47f9d6c33ac27df4e85f6da0014b2a48, type: 3}
   m_PrefabInstance: {fileID: 1707206154}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1707206156 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8159833627456886110, guid: 47f9d6c33ac27df4e85f6da0014b2a48, type: 3}
+  m_PrefabInstance: {fileID: 1707206154}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707206155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad91763d76c1f34a944f60f723c6088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1723916104
 GameObject:
   m_ObjectHideFlags: 0
