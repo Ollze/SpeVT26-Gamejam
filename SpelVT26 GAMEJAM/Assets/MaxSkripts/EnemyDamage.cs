@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class EnemyDamage : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
+    private PlayerHealth playerHealth;
     public int damage = 2;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
-        
+        playerHealth = FindFirstObjectByType<PlayerHealth>();
     }
 
     // Update is called once per frame
