@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9112183351215870402}
   - component: {fileID: 7993725082109915540}
   - component: {fileID: 2242374592700391371}
+  - component: {fileID: -5286122345774995730}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -138,6 +139,8 @@ MonoBehaviour:
   rotationSpeed: 150
   maxHealth: 50
   CoinObject: {fileID: 759763340083072760, guid: 038a200f5be6e31468975219778c23c9, type: 3}
+  enemy1: 0
+  enemy2: 0
 --- !u!114 &7993725082109915540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,3 +200,17 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-5286122345774995730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4798386753533600900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bdebd5993e2d84685c0feff3cde5e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDamage
+  playerHealth: {fileID: 7192150193919733420, guid: 47f9d6c33ac27df4e85f6da0014b2a48, type: 3}
+  damage: 2

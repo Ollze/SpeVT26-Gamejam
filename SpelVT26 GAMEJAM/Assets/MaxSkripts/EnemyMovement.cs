@@ -36,6 +36,7 @@ public class EnemyMovement : MonoBehaviour
         if (enemy1 || !enemy1 && !enemy2)
         {
             maxHealth = 50f;
+            
         }
 
         if (enemy2)
