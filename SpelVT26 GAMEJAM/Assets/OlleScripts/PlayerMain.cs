@@ -9,22 +9,25 @@ public class PlayerMain : MonoBehaviour
     public ParticleSystem shootParticles;
     public float MaxMana = 100f;
     public float CurrentMana;
-    public Slider Mana;
-    public Slider playerHealth;
+    public UnityEngine.UI.Slider Mana;
     public float Currency = 0;
     bool manaOverheat;
     bool isshooting;
     public float coinGain = 1f;
+
     void Start()
     {
         MaxMana = 100f;
         CurrentMana += MaxMana;
         coinGain = 1f;
+        Mana.maxValue = MaxMana;
+        Mana.value = CurrentMana;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Mana.value = CurrentMana;
         //print("Current Mana " + CurrentMana);
         if (Keyboard.current.wKey.isPressed) { transform.position += new Vector3(0, 1, 0)* moveSpeed * Time.deltaTime; }
         if (Keyboard.current.sKey.isPressed) { transform.position += new Vector3(0, -1, 0)* moveSpeed * Time.deltaTime; }
@@ -36,6 +39,7 @@ public class PlayerMain : MonoBehaviour
             print("Left click pressed");
             if (CurrentMana <= 0f)
             { manaOverheat = true; CurrentMana = 0f; print("Mana overheat"); }
+            
         }
         else
         {
