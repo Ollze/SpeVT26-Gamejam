@@ -14,7 +14,7 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(float damageAmount)
     {
         health -= damageAmount; //5-->4....--> 0 = Enemy DIES!
-        print("Current Health " + health);
+        //print("Current Health " + health);
 
         if (health <= 0)
         {

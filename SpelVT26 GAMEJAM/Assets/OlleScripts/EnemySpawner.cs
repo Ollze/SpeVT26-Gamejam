@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
         //set spawn point till 10 ifrån spelaren och spawna
         Vector3 spawnPoint = enemySpawnPoint.position;
         Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
-        print("enemy spawned at bearing " + randomAngle);      
+        //print("enemy spawned at bearing " + randomAngle);      
     }
 
 

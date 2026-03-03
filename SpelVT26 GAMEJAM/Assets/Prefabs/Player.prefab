@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 677696540914394828}
   - component: {fileID: 8737313344348051551}
   - component: {fileID: 8159833627456886110}
+  - component: {fileID: 1718331800257922616}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -222,6 +223,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad91763d76c1f34a944f60f723c6088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  shootParticles: {fileID: 0}
+  MaxMana: 100
+  CurrentMana: 0
+  Mana: {fileID: 0}
+  playerHealth: {fileID: 0}
+--- !u!114 &1718331800257922616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6124882743622339557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68713f88d24eac747bb0909d6a4e9626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Character
+  currentHealth: 10
+  maxHealth: 10
+  currentExperience: 0
+  maxExperience: 300
+  currentLevel: 1
 --- !u!1 &6253715468180301287
 GameObject:
   m_ObjectHideFlags: 0
