@@ -3,7 +3,12 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+
+    //VARNIG!!!!! DEN HÄR KODEN ANVÄNDS INTE LÄNGRE
+
+
     [SerializeField] float health, maxHealth = 50f;
+    public float damageAmount = 1;
     
 
     private void Start()
@@ -11,8 +16,9 @@ public class EnemyHealth : MonoBehaviour
         health = maxHealth;
     }
 
-    public void TakeDamage(float damageAmount)
+    public void TakeDamage()
     {
+        damageAmount = ShopUppgrades.upgradedDamageAmount;
         health -= damageAmount; //5-->4....--> 0 = Enemy DIES!
         //print("Current Health " + health);
 
@@ -30,6 +36,6 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        TakeDamage(1f);
+        TakeDamage();
     }
 }
