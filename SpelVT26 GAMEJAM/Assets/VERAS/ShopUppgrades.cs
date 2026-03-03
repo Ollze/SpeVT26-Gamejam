@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ShopUppgrades : MonoBehaviour
 {
-    
+    public static float upgradedDamageAmount = 1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
