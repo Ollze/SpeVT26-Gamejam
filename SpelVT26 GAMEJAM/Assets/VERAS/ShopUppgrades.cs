@@ -19,6 +19,7 @@ public class ShopUppgrades : MonoBehaviour
 
     public void DMGuppgrade()
     {
+        upgradedDamageAmount += 1f;
         
     }
 }
