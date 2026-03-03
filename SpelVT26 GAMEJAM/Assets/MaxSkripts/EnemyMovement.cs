@@ -15,6 +15,7 @@ public class EnemyMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private PlayerAwarement playerAwarenessController;
+    private EnemySpawner spawnerScript;
     private Vector2 targetDirection;
 
     [Header("Enemy Type")]
@@ -25,6 +26,8 @@ public class EnemyMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerAwarenessController = GetComponent<PlayerAwarement>();
+        spawnerScript = FindFirstObjectByType<EnemySpawner>();
+
     }
 
     private void Start()
@@ -112,6 +115,8 @@ public class EnemyMovement : MonoBehaviour
     private void EnemyDied()
     {
         Instantiate(CoinObject, transform.position, Quaternion.identity);
+        spawnerScript.killCount += 1;
+        print("You have killed " + spawnerScript.killCount + " enemies");
         Destroy(gameObject);
     }
 
