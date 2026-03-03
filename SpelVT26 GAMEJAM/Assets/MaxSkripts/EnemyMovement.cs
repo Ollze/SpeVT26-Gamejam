@@ -36,13 +36,14 @@ public class EnemyMovement : MonoBehaviour
         if (enemy1 || !enemy1 && !enemy2)
         {
             maxHealth = 50f;
-            
+            GetComponent<SpriteRenderer>().color = Color.blue;
         }
 
         if (enemy2)
         {
             maxHealth = 100f;
             speed = 0.5f;
+            GetComponent<SpriteRenderer>().color = Color.red;
         }
 
 
