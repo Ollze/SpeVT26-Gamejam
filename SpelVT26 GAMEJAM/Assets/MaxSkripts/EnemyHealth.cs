@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+
+    //VARNIG!!!!! DEN HÄR KODEN ANVÄNDS INTE LÄNGRE
+
+
     [SerializeField] float health, maxHealth = 50f;
     public float damageAmount = 1;
     

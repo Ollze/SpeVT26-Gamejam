@@ -116,6 +116,6 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        TakeDamage(1f);
+        TakeDamage(ShopUppgrades.upgradedDamageAmount);
     }
 }
