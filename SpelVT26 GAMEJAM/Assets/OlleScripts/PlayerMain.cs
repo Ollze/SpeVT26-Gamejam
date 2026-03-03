@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PlayerMain : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    float moveSpeed = 5;
+    public float moveSpeed = 5;
     public ParticleSystem shootParticles;
     public float MaxMana = 100f;
     public float CurrentMana;
