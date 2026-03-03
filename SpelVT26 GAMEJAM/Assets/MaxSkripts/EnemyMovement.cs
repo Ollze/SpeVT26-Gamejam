@@ -1,12 +1,15 @@
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
-{
-    [SerializeField]
-    private float speed;
+{ 
+    //den här coden var orginellt 2 olika koder men jag smasha ihop de med AI så det är enklare att jobba på andra svårare fiender
+    [Header("Movement Settings")]
+    [SerializeField] private float speed;
+    [SerializeField] private float rotationSpeed;
 
-    [SerializeField]
-    private float rotationSpeed;
+    [Header("Health Settings")]
+    [SerializeField] private float maxHealth = 50f;
+    private float health;
 
     private Rigidbody2D rb;
     private PlayerAwarement playerAwarenessController;
@@ -18,12 +21,19 @@ public class EnemyMovement : MonoBehaviour
         playerAwarenessController = GetComponent<PlayerAwarement>();
     }
 
+    private void Start()
+    {
+        health = maxHealth;
+    }
+
     private void FixedUpdate()
     {
         UpdateTargetDirection();
         RotateTowardsTarget();
         SetVelocity();
     }
+
+    // ================= MOVEMENT =================
 
     private void UpdateTargetDirection()
     {
@@ -40,12 +50,14 @@ public class EnemyMovement : MonoBehaviour
     private void RotateTowardsTarget()
     {
         if (targetDirection == Vector2.zero)
-        {
             return;
-        }
 
         Quaternion targetRotation = Quaternion.LookRotation(transform.forward, targetDirection);
-        Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        Quaternion rotation = Quaternion.RotateTowards(
+            transform.rotation,
+            targetRotation,
+            rotationSpeed * Time.deltaTime
+        );
 
         rb.SetRotation(rotation);
     }
@@ -60,5 +72,27 @@ public class EnemyMovement : MonoBehaviour
         {
             rb.linearVelocity = transform.up * speed;
         }
+    }
+
+    // ================= HEALTH =================
+
+    public void TakeDamage(float damageAmount)
+    {
+        health -= damageAmount;
+
+        if (health <= 0f)
+        {
+            EnemyDied();
+        }
+    }
+
+    private void EnemyDied()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        TakeDamage(1f);
     }
 }
