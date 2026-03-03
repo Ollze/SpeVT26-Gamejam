@@ -8,10 +8,19 @@ public class EnemySpawner : MonoBehaviour
     public Transform enemySpawnPoint;
     //public Vector3 spawnPoint;
     public float spawnRate = 2f;
-    // Update is called once per frame
-    private void Start()
+    public int killCount;
+    private float spawnTimer;
+
+    private void Update()
     {
-        InvokeRepeating(nameof(SpawnEnemy), 1f, spawnRate);
+        spawnTimer += Time.deltaTime;
+        
+
+        if (spawnTimer >= spawnRate)
+        {
+            SpawnEnemy();
+            spawnTimer = 0f;
+        }
     }
     private void SpawnEnemy()
     {
