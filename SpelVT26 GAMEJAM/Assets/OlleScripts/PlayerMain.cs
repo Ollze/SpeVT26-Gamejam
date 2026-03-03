@@ -15,33 +15,37 @@ public class PlayerMain : MonoBehaviour
     bool isshooting;
     void Start()
     {
-        MaxMana = CurrentMana;
+        CurrentMana += MaxMana;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //print("Current Mana " + CurrentMana);
         if (Keyboard.current.wKey.isPressed) { transform.position += new Vector3(0, 1, 0)* moveSpeed * Time.deltaTime; }
         if (Keyboard.current.sKey.isPressed) { transform.position += new Vector3(0, -1, 0)* moveSpeed * Time.deltaTime; }
         if (Keyboard.current.dKey.isPressed) { transform.position += new Vector3(1, 0, 0)* moveSpeed * Time.deltaTime; }
         if (Keyboard.current.aKey.isPressed) { transform.position += new Vector3(-1, 0, 0) * moveSpeed * Time.deltaTime; }
-        if (Mouse.current.leftButton.isPressed && CurrentMana > 0 && !manaOverheat)
+        if (Mouse.current.leftButton.isPressed && CurrentMana > 0f && !manaOverheat)
         {
             Shoot();
-           
+            print("Left click pressed");
+            if (CurrentMana <= 0f)
+            { manaOverheat = true; CurrentMana = 0f; print("Mana overheat"); }
         }
-        if (!isshooting)
+        else
         {
-            CurrentMana += 2f * Time.deltaTime;
-        }
-        if (CurrentMana == MaxMana)
-        {
-            manaOverheat = false;
-        }
-        else if (CurrentMana >= 0)
-        {
-            manaOverheat = true;
-            print("Mana overheat");
+            isshooting = false;
+            if (CurrentMana < MaxMana)
+            {
+                CurrentMana += 20f * Time.deltaTime;
+
+                if (CurrentMana>= MaxMana)
+                {
+                    manaOverheat = false;
+                    print("Manaoverheat" + manaOverheat);
+                }
+            }
         }
     }
 
@@ -49,7 +53,7 @@ public class PlayerMain : MonoBehaviour
     public void Shoot()
     {
         shootParticles.Play();
-        CurrentMana = -2f * Time.deltaTime;
+        CurrentMana += -15f * Time.deltaTime;
         isshooting = true;
     }
 }

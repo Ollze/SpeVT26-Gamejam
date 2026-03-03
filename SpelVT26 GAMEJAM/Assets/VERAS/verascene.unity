@@ -618,9 +618,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33902d97788408049952ed2f28abf269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  dialogueText: {fileID: 0}
-  lines: []
-  textSpeed: 0
+  dialogueText: {fileID: 840267381}
+  lines:
+  - hello
+  - hii
+  textSpeed: 0.4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
