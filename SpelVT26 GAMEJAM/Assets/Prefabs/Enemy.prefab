@@ -212,5 +212,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37bdebd5993e2d84685c0feff3cde5e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDamage
-  playerHealth: {fileID: 7192150193919733420, guid: 47f9d6c33ac27df4e85f6da0014b2a48, type: 3}
-  damage: 2
+  damage: 1

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ public class PlayerMain : MonoBehaviour
     bool manaOverheat;
     bool isshooting;
     public float coinGain = 1f;
+    public TextMeshProUGUI coinText;
 
     void Start()
     {
@@ -22,6 +24,7 @@ public class PlayerMain : MonoBehaviour
         coinGain = 1f;
         Mana.maxValue = MaxMana;
         Mana.value = CurrentMana;
+        coinText.text = coinGain.ToString();
     }
 
     // Update is called once per frame
@@ -34,6 +37,7 @@ public class PlayerMain : MonoBehaviour
         if (Keyboard.current.dKey.isPressed) { transform.position += new Vector3(1, 0, 0)* moveSpeed * Time.deltaTime; }
         if (Keyboard.current.aKey.isPressed) { transform.position += new Vector3(-1, 0, 0) * moveSpeed * Time.deltaTime; }
         if (Mouse.current.leftButton.isPressed && CurrentMana > 0f && !manaOverheat)
+            
         {
             Shoot();
             print("Left click pressed");
@@ -68,6 +72,7 @@ public class PlayerMain : MonoBehaviour
     {
         if (collision.collider.CompareTag("Coin"))
         {
+            coinText.text = coinGain.ToString();
             Destroy(collision.collider.gameObject);
             Currency += coinGain;
             print("Current points/coins " + Currency);

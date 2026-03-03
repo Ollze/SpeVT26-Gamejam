@@ -1,4 +1,10 @@
+using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class ShopUppgrades : MonoBehaviour
 {
@@ -8,12 +14,16 @@ public class ShopUppgrades : MonoBehaviour
     bool istesting;
     public PlayerHealth playerHealth;
     public ParticleSystem particles;
+    public GameObject uiPanel;
+    public TextMeshProUGUI eText;
+    private bool playerInside = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         GetComponent<EnemyHealth>();
-        
+        uiPanel.gameObject.SetActive(false);
+        eText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -25,9 +35,16 @@ public class ShopUppgrades : MonoBehaviour
 
     public void DMGuppgrade()
     {
-
-        upgradedDamageAmount += 1f;
-        print("button pressed");
+        if (playerCode.Currency >= 30f)
+        {
+            upgradedDamageAmount += 1f;
+            print("button pressed");
+            playerCode.Currency += -30f;
+        }
+        if (playerCode.Currency < 30f)
+        {
+            GetComponent<Animator>().SetTrigger("Poor");
+        }
         
     }
 
@@ -60,4 +77,38 @@ public class ShopUppgrades : MonoBehaviour
 
         var emission = particles.emission; emission.rateOverTime = 200f;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player")) 
+        {
+            print("collided");
+            playerInside = true;
+            eText.gameObject.SetActive(true);
+        }
+      
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (Keyboard.current.eKey.wasPressedThisFrame)
+            {
+                uiPanel.gameObject.SetActive(true);
+                Time.timeScale = 0f;
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerInside = false;
+            eText.gameObject.SetActive(false);
+            uiPanel.gameObject.SetActive(false);
+            Time.timeScale = 1f;
+        }
+    }
+
 }
