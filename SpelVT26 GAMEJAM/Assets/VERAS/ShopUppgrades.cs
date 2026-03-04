@@ -18,6 +18,7 @@ public class ShopUppgrades : MonoBehaviour
     public TextMeshProUGUI eText;
     private bool playerInside = false;
     private bool shopOpen;
+    public MenuMusic menuAudio;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,7 +38,7 @@ public class ShopUppgrades : MonoBehaviour
             shopOpen = false;
             uiPanel.gameObject.SetActive(false);
             print("Pressed E to turn OFF shop");
-
+            
         }
     }
 
@@ -109,6 +110,7 @@ public class ShopUppgrades : MonoBehaviour
                 Time.timeScale = 0f;
                 shopOpen = true;
                 print("shopOpen = " + shopOpen);
+                menuAudio.PlayMenuOpenSound();
             }
             
         }
