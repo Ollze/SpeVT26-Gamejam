@@ -16,6 +16,7 @@ public class PlayerMain : MonoBehaviour
     bool isshooting;
     public float coinGain = 1f;
     public TextMeshProUGUI coinText;
+    public Animator anim;
 
     void Start()
     {
@@ -25,6 +26,8 @@ public class PlayerMain : MonoBehaviour
         Mana.maxValue = MaxMana;
         Mana.value = CurrentMana;
         coinText.text = coinGain.ToString();
+       // anim = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -32,10 +35,20 @@ public class PlayerMain : MonoBehaviour
     {
         Mana.value = CurrentMana;
         //print("Current Mana " + CurrentMana);
-        if (Keyboard.current.wKey.isPressed) { transform.position += new Vector3(0, 1, 0)* moveSpeed * Time.deltaTime; }
+        if (Keyboard.current.wKey.isPressed) 
+        {
+            transform.position += new Vector3(0, 1, 0) * moveSpeed * Time.deltaTime; }
         if (Keyboard.current.sKey.isPressed) { transform.position += new Vector3(0, -1, 0)* moveSpeed * Time.deltaTime; }
         if (Keyboard.current.dKey.isPressed) { transform.position += new Vector3(1, 0, 0)* moveSpeed * Time.deltaTime; }
         if (Keyboard.current.aKey.isPressed) { transform.position += new Vector3(-1, 0, 0) * moveSpeed * Time.deltaTime; }
+        if(!Keyboard.current.sKey.isPressed && !Keyboard.current.wKey.isPressed && !Keyboard.current.dKey.isPressed && !Keyboard.current.aKey.isPressed)
+        {
+            anim.SetBool("isWalking", false);
+        }
+        else
+        {
+            anim.SetBool("isWalking", true);
+        }
         if (Mouse.current.leftButton.isPressed && CurrentMana > 0f && !manaOverheat)
             
         {
@@ -59,6 +72,10 @@ public class PlayerMain : MonoBehaviour
                 }
             }
         }
+
+       
+
+        
     }
 
 
