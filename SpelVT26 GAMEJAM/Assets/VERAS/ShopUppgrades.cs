@@ -19,6 +19,11 @@ public class ShopUppgrades : MonoBehaviour
     private bool playerInside = false;
     private bool shopOpen;
     public MenuMusic menuAudio;
+    public TextMeshProUGUI dmgStat;
+    public TextMeshProUGUI spdStat;
+    public TextMeshProUGUI hpStat;
+    public TextMeshProUGUI manaStat;
+    public TextMeshProUGUI coinStat;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,6 +32,11 @@ public class ShopUppgrades : MonoBehaviour
         uiPanel.gameObject.SetActive(false);
         eText.gameObject.SetActive(false);
         shopOpen = false;
+        dmgStat.text = ("DMG per bullet: " + upgradedDamageAmount.ToString());
+        spdStat.text = ("MoveSpeed: " + playerCode.moveSpeed.ToString());
+        hpStat.text = ("HP: " + playerHealth.health.ToString());
+        manaStat.text = ( "Max mana: " + playerCode.MaxMana.ToString());
+        coinStat.text = ("coin gain: " + playerCode.coinGain.ToString());
     }
 
     // Update is called once per frame
@@ -41,6 +51,11 @@ public class ShopUppgrades : MonoBehaviour
             menuAudio.StopMenuOpenSound();
 
         }
+        dmgStat.text = ("DMG per bullet: " + upgradedDamageAmount.ToString());
+        spdStat.text = ("MoveSpeed: " + playerCode.moveSpeed.ToString());
+        hpStat.text = ("HP: " + playerHealth.health.ToString());
+        manaStat.text = ("Max mana: " + playerCode.MaxMana.ToString());
+        coinStat.text = ("coin gain: " + playerCode.coinGain.ToString());
     }
 
 
@@ -67,6 +82,7 @@ public class ShopUppgrades : MonoBehaviour
     public void ManaUppgrade()
     {
         playerCode.MaxMana += 100f;
+
     }
 
     public void CoinUppgrade()
