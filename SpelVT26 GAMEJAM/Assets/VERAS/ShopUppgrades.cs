@@ -24,6 +24,7 @@ public class ShopUppgrades : MonoBehaviour
     public TextMeshProUGUI hpStat;
     public TextMeshProUGUI manaStat;
     public TextMeshProUGUI coinStat;
+    public Animator textAnim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,6 +38,7 @@ public class ShopUppgrades : MonoBehaviour
         hpStat.text = ("HP: " + playerHealth.health.ToString());
         manaStat.text = ( "Max mana: " + playerCode.MaxMana.ToString());
         coinStat.text = ("coin gain: " + playerCode.coinGain.ToString());
+        
     }
 
     // Update is called once per frame
@@ -61,48 +63,95 @@ public class ShopUppgrades : MonoBehaviour
 
     public void DMGuppgrade()
     {
-        if (playerCode.Currency >= 30f)
+        if (playerCode.Currency >= 10f)
         {
             upgradedDamageAmount += 1f;
             print("button pressed");
-            playerCode.Currency += -30f;
+            playerCode.Currency += -10f;
         }
-        if (playerCode.Currency < 30f)
+        if (playerCode.Currency < 10f)
         {
-            GetComponent<Animator>().SetTrigger("Poor");
+            textAnim.SetTrigger("Poor");
         }
         
     }
 
     public void SPDuppgrade()
     {
-        playerCode.moveSpeed += 2f;
+        
+        if (playerCode.Currency >= 10f)
+        {
+            playerCode.moveSpeed += 2f;
+            print("button pressed");
+            playerCode.Currency += -10f;
+        }
+        if (playerCode.Currency < 10f)
+        {
+            textAnim.SetTrigger("Poor");
+        }
     }
 
     public void ManaUppgrade()
     {
-        playerCode.MaxMana += 100f;
+        
+        if (playerCode.Currency >= 10f)
+        {
+            playerCode.MaxMana += 100f;
+            playerCode.Currency += -10f;
+        }
+        if (playerCode.Currency < 10f)
+        {
+            textAnim.SetTrigger("Poor");
+        }
 
     }
 
     public void CoinUppgrade()
     {
-        playerCode.coinGain += 1f;
+       
+        if (playerCode.Currency >= 10f)
+        {
+            playerCode.coinGain += 1f;
+            playerCode.Currency += -10f;
+        }
+        if (playerCode.Currency < 10f)
+        {
+            textAnim.SetTrigger("Poor");
+        }
     }
 
     public void HealthUppgrade()
     {
-        playerHealth.health += 1;
-        playerHealth.maxHealth += 1;
+        if (playerCode.Currency >= 10f)
+        {
+            playerHealth.health += 1;
+            playerHealth.maxHealth += 1;
+            playerCode.Currency += -10f;
+        }
+        if (playerCode.Currency < 10f)
+        {
+            textAnim.SetTrigger("Poor");
+        }
+       
     }
 
     public void WeaponUppgrades()
     {
-        var shape = particles.shape;
-        shape.radius = 2f;
-        shape.angle = 40f;
 
-        var emission = particles.emission; emission.rateOverTime = 200f;
+        if (playerCode.Currency >= 20f)
+        {
+            var shape = particles.shape;
+            shape.radius = 2f;
+            shape.angle = 40f;
+
+            var emission = particles.emission; emission.rateOverTime = 200f;
+            playerCode.Currency += -20f;
+        }
+        if (playerCode.Currency < 20f)
+        {
+            textAnim.SetTrigger("Poor");
+        }
+       
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

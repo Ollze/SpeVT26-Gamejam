@@ -2090,6 +2090,7 @@ MonoBehaviour:
   hpStat: {fileID: 1823743148}
   manaStat: {fileID: 1068458633}
   coinStat: {fileID: 2128780249}
+  textAnim: {fileID: 1861987986}
 --- !u!50 &1027696967
 Rigidbody2D:
   serializedVersion: 5
