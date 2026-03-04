@@ -38,7 +38,7 @@ public class ShopUppgrades : MonoBehaviour
             shopOpen = false;
             uiPanel.gameObject.SetActive(false);
             print("Pressed E to turn OFF shop");
-            menuAudio.PlayMenuOpenSound();
+            menuAudio.StopMenuOpenSound();
 
         }
     }
