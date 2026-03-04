@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -18,6 +19,7 @@ public class PlayerMain : MonoBehaviour
     public TextMeshProUGUI coinText;
     public Animator anim;
     public SpriteRenderer playerSprite;
+    public Image manaSliderImage;
 
     void Start()
     {
@@ -81,7 +83,11 @@ public class PlayerMain : MonoBehaviour
                 }
             }
         }
-
+        if (manaOverheat)
+        {
+            manaSliderImage.color = new Color(1, 0.3f, 0.3f);
+        }
+        else { manaSliderImage.color = new Color(1, 1, 1); }
        
 
         
@@ -94,6 +100,7 @@ public class PlayerMain : MonoBehaviour
         CurrentMana += -15f * Time.deltaTime;
         isshooting = true;
     }
+    
   
     private void OnTriggerEnter2D(Collider2D collision)
     {
