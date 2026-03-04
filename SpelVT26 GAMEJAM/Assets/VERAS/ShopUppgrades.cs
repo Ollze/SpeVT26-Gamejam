@@ -109,6 +109,9 @@ public class ShopUppgrades : MonoBehaviour
             playerCode.MaxMana += 100f;
             playerCode.Currency += -10f;
             playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
+            playerCode.manaRegen += 20f;
+            playerCode.Mana.maxValue = playerCode.MaxMana;
+            playerCode.Mana.value = playerCode.CurrentMana;
         }
         if (playerCode.Currency < 10f)
         {
@@ -140,6 +143,8 @@ public class ShopUppgrades : MonoBehaviour
             playerHealth.maxHealth += 1;
             playerCode.Currency += -10f;
             playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
+            playerHealth.healthBar.maxValue = playerHealth.maxHealth;
+            playerHealth.healthBar.value = playerHealth.health;
         }
         if (playerCode.Currency < 10f)
         {
