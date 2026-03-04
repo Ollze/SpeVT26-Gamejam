@@ -53,6 +53,14 @@ public class ShopUppgrades : MonoBehaviour
             menuAudio.StopMenuOpenSound();
 
         }
+        if (Keyboard.current.eKey.wasPressedThisFrame && !shopOpen)
+        {
+            uiPanel.gameObject.SetActive(true);
+            Time.timeScale = 0f;
+            shopOpen = true;
+            print("shopOpen = " + shopOpen);
+            menuAudio.PlayMenuOpenSound();
+        }
         dmgStat.text = ("DMG per bullet: " + upgradedDamageAmount.ToString());
         spdStat.text = ("MoveSpeed: " + playerCode.moveSpeed.ToString());
         hpStat.text = ("HP: " + playerHealth.health.ToString());
@@ -153,43 +161,25 @@ public class ShopUppgrades : MonoBehaviour
         }
        
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")) 
+        if (collision.CompareTag("Player"))
         {
-            print("collided");
+            print("Player entered trigger");
             playerInside = true;
             eText.gameObject.SetActive(true);
         }
-      
-    }
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            
-            if (Keyboard.current.eKey.wasPressedThisFrame && !shopOpen)
-            {
-                uiPanel.gameObject.SetActive(true);
-                Time.timeScale = 0f;
-                shopOpen = true;
-                print("shopOpen = " + shopOpen);
-                menuAudio.PlayMenuOpenSound();
-            }
-            
-        }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+   
+
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             playerInside = false;
             eText.gameObject.SetActive(false);
-            //uiPanel.gameObject.SetActive(false);
-            
         }
     }
 
