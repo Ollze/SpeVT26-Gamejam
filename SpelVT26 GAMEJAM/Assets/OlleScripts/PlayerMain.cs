@@ -17,6 +17,7 @@ public class PlayerMain : MonoBehaviour
     public float coinGain = 1f;
     public TextMeshProUGUI coinText;
     public Animator anim;
+    public SpriteRenderer playerSprite;
 
     void Start()
     {
@@ -39,8 +40,16 @@ public class PlayerMain : MonoBehaviour
         {
             transform.position += new Vector3(0, 1, 0) * moveSpeed * Time.deltaTime; }
         if (Keyboard.current.sKey.isPressed) { transform.position += new Vector3(0, -1, 0)* moveSpeed * Time.deltaTime; }
-        if (Keyboard.current.dKey.isPressed) { transform.position += new Vector3(1, 0, 0)* moveSpeed * Time.deltaTime; }
-        if (Keyboard.current.aKey.isPressed) { transform.position += new Vector3(-1, 0, 0) * moveSpeed * Time.deltaTime; }
+        if (Keyboard.current.dKey.isPressed)
+        {
+            transform.position += new Vector3(1, 0, 0)* moveSpeed * Time.deltaTime;
+            playerSprite.transform.rotation = new Quaternion(0, 0, 0, 0);
+        }
+        if (Keyboard.current.aKey.isPressed) 
+        {
+            transform.position += new Vector3(-1, 0, 0) * moveSpeed * Time.deltaTime;
+            playerSprite.transform.rotation = new Quaternion(0, 180, 0, 0);
+        }
         if(!Keyboard.current.sKey.isPressed && !Keyboard.current.wKey.isPressed && !Keyboard.current.dKey.isPressed && !Keyboard.current.aKey.isPressed)
         {
             anim.SetBool("isWalking", false);
@@ -85,12 +94,13 @@ public class PlayerMain : MonoBehaviour
         CurrentMana += -15f * Time.deltaTime;
         isshooting = true;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+  
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.collider.CompareTag("Coin"))
+        if (collision.CompareTag("Coin"))
         {
             coinText.text = coinGain.ToString();
-            Destroy(collision.collider.gameObject);
+            Destroy(collision.gameObject);
             Currency += coinGain;
             print("Current points/coins " + Currency);
         }
