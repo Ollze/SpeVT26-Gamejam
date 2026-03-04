@@ -13,4 +13,9 @@ public class MenuMusic : MonoBehaviour
     {
         audioSource.Play();
     }
+
+    public void StopMenuOpenSound()
+    {
+        audioSource.Stop();
+    }
 }

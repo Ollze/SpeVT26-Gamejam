@@ -588,16 +588,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125791856}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 2.4324589, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1465020206}
+  m_Father: {fileID: 1447060666}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -27, y: -123}
+  m_AnchoredPosition: {x: -695.6833, y: -111.505005}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &125791858
@@ -2009,6 +2009,7 @@ MonoBehaviour:
   particles: {fileID: 595129306}
   uiPanel: {fileID: 1447060663}
   eText: {fileID: 1532307899}
+  menuAudio: {fileID: 0}
 --- !u!50 &1027696967
 Rigidbody2D:
   serializedVersion: 5
@@ -3311,6 +3312,7 @@ RectTransform:
   m_Children:
   - {fileID: 1008485581}
   - {fileID: 1117646794}
+  - {fileID: 125791857}
   m_Father: {fileID: 1465020206}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3419,7 +3421,6 @@ RectTransform:
   - {fileID: 210003034}
   - {fileID: 1611550296}
   - {fileID: 1861987983}
-  - {fileID: 125791857}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4620,15 +4621,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Not enough money!!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 92d3bbf48503a5746a0bd18582951c01, type: 2}
+  m_sharedMaterial: {fileID: 4828101240982260207, guid: 92d3bbf48503a5746a0bd18582951c01, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
