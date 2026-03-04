@@ -88,9 +88,9 @@ public class PlayerMain : MonoBehaviour
             manaSliderImage.color = new Color(1, 0.3f, 0.3f);
         }
         else { manaSliderImage.color = new Color(1, 1, 1); }
-       
 
-        
+        coinText.text = coinGain.ToString();
+
     }
 
 
@@ -106,9 +106,10 @@ public class PlayerMain : MonoBehaviour
     {
         if (collision.CompareTag("Coin"))
         {
-            coinText.text = coinGain.ToString();
+            coinText.text = ("Stardust: " + Currency.ToString());
             Destroy(collision.gameObject);
             Currency += coinGain;
+
             print("Current points/coins " + Currency);
         }
     }
