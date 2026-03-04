@@ -1465,6 +1465,10 @@ PrefabInstance:
       propertyPath: ShapeModule.radius.value
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4358643652960007469, guid: 47f9d6c33ac27df4e85f6da0014b2a48, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 100000
+      objectReference: {fileID: 0}
     - target: {fileID: 6124882743622339557, guid: 47f9d6c33ac27df4e85f6da0014b2a48, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1477,6 +1481,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 210003035}
+    - target: {fileID: 7192150193919733420, guid: 47f9d6c33ac27df4e85f6da0014b2a48, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8159833627456886110, guid: 47f9d6c33ac27df4e85f6da0014b2a48, type: 3}
       propertyPath: Mana
       value: 
@@ -2391,7 +2399,6 @@ MonoBehaviour:
   hpStat: {fileID: 1823743148}
   manaStat: {fileID: 1068458633}
   coinStat: {fileID: 2128780249}
-  textAnim: {fileID: 0}
 --- !u!50 &1027696967
 Rigidbody2D:
   serializedVersion: 5
@@ -4841,12 +4848,12 @@ GameObject:
   - component: {fileID: 1808223832}
   - component: {fileID: 1808223831}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: NotEnoughMoneyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1808223830
 RectTransform:
   m_ObjectHideFlags: 0

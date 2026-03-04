@@ -28,7 +28,7 @@ public class PlayerMain : MonoBehaviour
         coinGain = 1f;
         Mana.maxValue = MaxMana;
         Mana.value = CurrentMana;
-        coinText.text = coinGain.ToString();
+        coinText.text = ("Stardust: " +Currency.ToString());
        // anim = GetComponent<Animator>();
 
     }

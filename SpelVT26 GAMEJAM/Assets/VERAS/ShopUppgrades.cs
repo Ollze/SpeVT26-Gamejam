@@ -24,7 +24,7 @@ public class ShopUppgrades : MonoBehaviour
     public TextMeshProUGUI hpStat;
     public TextMeshProUGUI manaStat;
     public TextMeshProUGUI coinStat;
-    public Animator textAnim;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -76,10 +76,11 @@ public class ShopUppgrades : MonoBehaviour
             upgradedDamageAmount += 1f;
             print("button pressed");
             playerCode.Currency += -10f;
+            playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
         }
         if (playerCode.Currency < 10f)
         {
-            textAnim.SetTrigger("Poor");
+            
         }
         
     }
@@ -92,10 +93,11 @@ public class ShopUppgrades : MonoBehaviour
             playerCode.moveSpeed += 2f;
             print("button pressed");
             playerCode.Currency += -10f;
+            playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
         }
         if (playerCode.Currency < 10f)
         {
-            textAnim.SetTrigger("Poor");
+           
         }
     }
 
@@ -106,10 +108,11 @@ public class ShopUppgrades : MonoBehaviour
         {
             playerCode.MaxMana += 100f;
             playerCode.Currency += -10f;
+            playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
         }
         if (playerCode.Currency < 10f)
         {
-            textAnim.SetTrigger("Poor");
+            
         }
 
     }
@@ -121,10 +124,11 @@ public class ShopUppgrades : MonoBehaviour
         {
             playerCode.coinGain += 1f;
             playerCode.Currency += -10f;
+            playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
         }
         if (playerCode.Currency < 10f)
         {
-            textAnim.SetTrigger("Poor");
+            
         }
     }
 
@@ -135,10 +139,11 @@ public class ShopUppgrades : MonoBehaviour
             playerHealth.health += 1;
             playerHealth.maxHealth += 1;
             playerCode.Currency += -10f;
+            playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
         }
         if (playerCode.Currency < 10f)
         {
-            textAnim.SetTrigger("Poor");
+            
         }
        
     }
@@ -151,13 +156,13 @@ public class ShopUppgrades : MonoBehaviour
             var shape = particles.shape;
             shape.radius = 2f;
             shape.angle = 40f;
-
+            playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
             var emission = particles.emission; emission.rateOverTime = 200f;
             playerCode.Currency += -20f;
         }
         if (playerCode.Currency < 20f)
         {
-            textAnim.SetTrigger("Poor");
+            
         }
        
     }
