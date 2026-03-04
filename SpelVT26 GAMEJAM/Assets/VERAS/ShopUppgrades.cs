@@ -17,6 +17,7 @@ public class ShopUppgrades : MonoBehaviour
     public GameObject uiPanel;
     public TextMeshProUGUI eText;
     private bool playerInside = false;
+    private bool shopOpen;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,12 +25,20 @@ public class ShopUppgrades : MonoBehaviour
         GetComponent<EnemyHealth>();
         uiPanel.gameObject.SetActive(false);
         eText.gameObject.SetActive(false);
+        shopOpen = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        if (Keyboard.current.eKey.wasPressedThisFrame && shopOpen)
+        {
+            Time.timeScale = 1f;
+            shopOpen = false;
+            uiPanel.gameObject.SetActive(false);
+            print("Pressed E to turn OFF shop");
+
+        }
     }
 
 
@@ -90,13 +99,18 @@ public class ShopUppgrades : MonoBehaviour
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
+        
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (Keyboard.current.eKey.wasPressedThisFrame)
+            
+            if (Keyboard.current.eKey.wasPressedThisFrame && !shopOpen)
             {
                 uiPanel.gameObject.SetActive(true);
                 Time.timeScale = 0f;
+                shopOpen = true;
+                print("shopOpen = " + shopOpen);
             }
+            
         }
     }
 
@@ -106,8 +120,8 @@ public class ShopUppgrades : MonoBehaviour
         {
             playerInside = false;
             eText.gameObject.SetActive(false);
-            uiPanel.gameObject.SetActive(false);
-            Time.timeScale = 1f;
+            //uiPanel.gameObject.SetActive(false);
+            
         }
     }
 
