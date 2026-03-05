@@ -1,7 +1,8 @@
-using UnityEngine;
-
+ using UnityEngine;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
+    public GameObject gameOverUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,5 +13,25 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void gameOver()
+    {
+        gameOverUI.SetActive(true);
+    }
+
+    public void restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void mainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void quit()
+    {
+        Application.Quit();
     }
 }
