@@ -73,7 +73,7 @@ public class ShopUppgrades : MonoBehaviour
     {
         if (playerCode.Currency >= 10f)
         {
-            upgradedDamageAmount += 1f;
+            upgradedDamageAmount += 0.5f;
             print("button pressed");
             playerCode.Currency += -10f;
             playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
@@ -90,7 +90,7 @@ public class ShopUppgrades : MonoBehaviour
         
         if (playerCode.Currency >= 10f)
         {
-            playerCode.moveSpeed += 2f;
+            playerCode.moveSpeed += 1f;
             print("button pressed");
             playerCode.Currency += -10f;
             playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
@@ -125,7 +125,7 @@ public class ShopUppgrades : MonoBehaviour
        
         if (playerCode.Currency >= 10f)
         {
-            playerCode.coinGain += 1f;
+            playerCode.coinGain += 0.5f;
             playerCode.Currency += -10f;
             playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
         }
