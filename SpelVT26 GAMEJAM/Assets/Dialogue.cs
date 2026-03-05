@@ -20,7 +20,7 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.eKey.IsPressed())
+        if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             if (dialogueText.text == lines[index])
             {
