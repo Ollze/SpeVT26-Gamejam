@@ -72,9 +72,9 @@ public class PlayerMain : MonoBehaviour
             CurrentMana -= manaDamage;
             isshooting = true;
             Shoot();
-            print("Current Mana = " + CurrentMana);
-            print("Mana going down by " + manaDamage);
-            print("Left click pressed");
+            //print("Current Mana = " + CurrentMana);
+            //print("Mana going down by " + manaDamage);
+            //print("Left click pressed");
             if (CurrentMana <= 0f)
             { manaOverheat = true; CurrentMana = 0f; print("Mana overheat"); }
             shootParticles.Play();
@@ -88,7 +88,7 @@ public class PlayerMain : MonoBehaviour
         {
             if (CurrentMana < MaxMana)
             {
-                print("Iecreasing mana");
+                //print("Iecreasing mana");
 
                 CurrentMana += manaRegen * Time.deltaTime;
 
