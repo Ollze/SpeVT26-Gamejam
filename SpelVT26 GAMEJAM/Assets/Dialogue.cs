@@ -11,6 +11,7 @@ public class Dialogue : MonoBehaviour
     private int index = 0;
     public UnityEngine.UI.Image[] characterImages;
     public int[] speakerIndex;
+    public Animator[] characterAnimators;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -72,13 +73,30 @@ public class Dialogue : MonoBehaviour
     {
         for (int i = 0; i < characterImages.Length; i++)
         {
-            if (i == speakerIndex[index])
+            bool isSpeaker = (i == speakerIndex[index]);
+
+            characterImages[i].color = isSpeaker ? Color.white : new Color(1f, 1f, 1f, 0.3f);
+
+            if (characterAnimators != null && characterAnimators.Length > i)
             {
-                characterImages[i].color = Color.white;
-            }
-            else
-            {
-                characterImages[i].color = new Color(1f, 1f, 1f, 0.3f);
+                characterAnimators[i].ResetTrigger("Bounce");
+                characterAnimators[i].ResetTrigger("Bounce2");
+
+                if (isSpeaker)
+                {
+                    if (i == 0)
+                    {
+                        characterAnimators[i].SetTrigger("Bounce");
+
+                    }
+
+                    if (i == 1)
+                    {
+                        characterAnimators[i].SetTrigger("Bounce2");
+                    }
+                }
+                
+
             }
         }
     }

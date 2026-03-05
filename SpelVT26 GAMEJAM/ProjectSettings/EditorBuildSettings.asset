@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 7fc4944422c7ea846a9be8fcfd6d976a
   - enabled: 1
-    path: Assets/VERAS/introScene.unity
+    path: Assets/Scenes/introScene.unity
     guid: 5ee9b7ec1b8a3f7438a3bd755665505e
   - enabled: 1
     path: Assets/Scenes/MaxSin.unity
