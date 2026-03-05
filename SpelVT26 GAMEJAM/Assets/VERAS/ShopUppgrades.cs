@@ -30,7 +30,13 @@ public class ShopUppgrades : MonoBehaviour
     private float manaUpgradeCost = 10f;
     private float coinUpgradeCost = 10f;
     private float wpUpgradeCost = 20f;
-    
+    public TextMeshProUGUI dmgCostText;
+    public TextMeshProUGUI SPDCostText;
+    public TextMeshProUGUI MANACostText;
+    public TextMeshProUGUI HPcostText;
+    public TextMeshProUGUI WPNcostText;
+    public TextMeshProUGUI CoinCostText;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -44,7 +50,7 @@ public class ShopUppgrades : MonoBehaviour
         hpStat.text = ("HP: " + playerHealth.health.ToString());
         manaStat.text = ( "Max mana: " + playerCode.MaxMana.ToString());
         coinStat.text = ("coin gain: " + playerCode.coinGain.ToString());
-        
+        UpdateUI();
     }
 
     // Update is called once per frame
@@ -127,6 +133,7 @@ public class ShopUppgrades : MonoBehaviour
             manaUpgradeCost += 5f;
             manaUpgradeCost *= 1.5f;
             playerCode.Currency += -manaUpgradeCost;
+            UpdateUI();
         }
         if (playerCode.Currency < manaUpgradeCost)
         {
@@ -146,6 +153,7 @@ public class ShopUppgrades : MonoBehaviour
             coinUpgradeCost += 8;
             coinUpgradeCost *= 1.5f;
             playerCode.Currency += -coinUpgradeCost;
+            UpdateUI();
         }
         if (playerCode.Currency < coinUpgradeCost)
         {
@@ -166,6 +174,7 @@ public class ShopUppgrades : MonoBehaviour
             hpUpgradeCost += 8f;
             hpUpgradeCost *= 1.3f;
             playerCode.Currency += -hpUpgradeCost;
+            UpdateUI();
         }
         if (playerCode.Currency < hpUpgradeCost)
         {
@@ -188,6 +197,7 @@ public class ShopUppgrades : MonoBehaviour
             wpUpgradeCost += 15f;
             wpUpgradeCost *= 1.8f;
             playerCode.Currency += -wpUpgradeCost;
+            UpdateUI();
         }
         if (playerCode.Currency < wpUpgradeCost)
         {
@@ -217,4 +227,20 @@ public class ShopUppgrades : MonoBehaviour
         }
     }
 
+
+    public void UpdateUI()
+    {
+        dmgStat.text = ("DMG per bullet: " + upgradedDamageAmount.ToString());
+        spdStat.text = ("MoveSpeed: " + playerCode.moveSpeed.ToString());
+        hpStat.text = ("HP: " + playerHealth.health.ToString());
+        manaStat.text = ("Max mana: " + playerCode.MaxMana.ToString());
+        coinStat.text = ("coin gain: " + playerCode.coinGain.ToString());
+        playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
+        CoinCostText.text = (coinUpgradeCost.ToString());
+        SPDCostText.text = (spdUpgradeCost.ToString());
+        MANACostText.text = (manaUpgradeCost.ToString());
+        HPcostText.text = (hpUpgradeCost.ToString());
+        WPNcostText.text = (wpUpgradeCost.ToString());
+        dmgCostText.text = (dmgUpgradeCost.ToString());
+    }
 }
