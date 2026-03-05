@@ -18,7 +18,8 @@ public class EnemyMovement : MonoBehaviour
     private PlayerAwarement playerAwarenessController;
     private EnemySpawner spawnerScript;
     private Vector2 targetDirection;
-
+    private Transform enemySprite;
+    private float spriteRotation;
     [Header("Enemy Type")]
     public bool enemy1;
     public bool enemy2;
@@ -28,6 +29,7 @@ public class EnemyMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerAwarenessController = GetComponent<PlayerAwarement>();
         spawnerScript = FindFirstObjectByType<EnemySpawner>();
+        
 
     }
 
@@ -37,14 +39,14 @@ public class EnemyMovement : MonoBehaviour
         if (enemy1 || !enemy1 && !enemy2)
         {
             maxHealth = 50f;
-            GetComponent<SpriteRenderer>().color = Color.blue;
+            
         }
 
         if (enemy2)
         {
             maxHealth = 100f;
             speed = 0.5f;
-            GetComponent<SpriteRenderer>().color = Color.red;
+            
         }
 
 
@@ -53,12 +55,14 @@ public class EnemyMovement : MonoBehaviour
 
         health = maxHealth;
     }
+    
 
     private void FixedUpdate()
     {
         UpdateTargetDirection();
         RotateTowardsTarget();
         SetVelocity();
+        
     }
 
     // ================= MOVEMENT =================
@@ -77,7 +81,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void RotateTowardsTarget()
     {
-        if (targetDirection == Vector2.zero)
+       /* if (targetDirection == Vector2.zero)
             return;
 
         Quaternion targetRotation = Quaternion.LookRotation(transform.forward, targetDirection);
@@ -87,7 +91,7 @@ public class EnemyMovement : MonoBehaviour
             rotationSpeed * Time.deltaTime
         );
 
-        rb.SetRotation(rotation);
+        rb.SetRotation(rotation);*/
     }
 
     private void SetVelocity()
@@ -98,7 +102,7 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            rb.linearVelocity = transform.up * speed;
+            rb.linearVelocity = targetDirection * speed;
         }
     }
 
