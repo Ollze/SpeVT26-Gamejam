@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
@@ -153,7 +154,7 @@ public class ShopUppgrades : MonoBehaviour
             playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
             coinUpgradeCost += 8;
             coinUpgradeCost *= 1.5f;
-            playerCode.Currency += -coinUpgradeCost;
+            playerCode.Currency -= coinUpgradeCost;
             UpdateUI();
         }
         if (playerCode.Currency < coinUpgradeCost)
@@ -244,4 +245,7 @@ public class ShopUppgrades : MonoBehaviour
         WPNcostText.text = (wpUpgradeCost.ToString());
         dmgCostText.text = (dmgUpgradeCost.ToString());
     }
+
+
+    
 }
