@@ -22,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
         healthBar.value = health;
         if (health <= 0)
         {
-            gameObject.SetActive(false);
+            Time.timeScale *= 0;
         }
 
 
