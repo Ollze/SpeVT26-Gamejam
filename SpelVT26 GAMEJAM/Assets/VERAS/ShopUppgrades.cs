@@ -16,8 +16,8 @@ public class ShopUppgrades : MonoBehaviour
     public ParticleSystem particles;
     public GameObject uiPanel;
     public TextMeshProUGUI eText;
-    private bool playerInside = false;
-    private bool shopOpen;
+    public bool playerInside = false;
+    public bool shopOpen;
     public MenuMusic menuAudio;
     public TextMeshProUGUI dmgStat;
     public TextMeshProUGUI spdStat;
@@ -51,6 +51,7 @@ public class ShopUppgrades : MonoBehaviour
         manaStat.text = ( "Max mana: " + playerCode.MaxMana.ToString());
         coinStat.text = ("coin gain: " + playerCode.coinGain.ToString());
         UpdateUI();
+       
     }
 
     // Update is called once per frame
