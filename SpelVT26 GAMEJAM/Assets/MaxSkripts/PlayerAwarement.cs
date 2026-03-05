@@ -30,5 +30,10 @@ public class PlayerAwarement : MonoBehaviour
         {
             AwareOfPlayer = false;
         }
+
+        if (enemyToPlayerVector.x < 0f)
+        {
+            transform.rotation = new Quaternion(0, 0, -1f, 0);
+        }
     }
 }
