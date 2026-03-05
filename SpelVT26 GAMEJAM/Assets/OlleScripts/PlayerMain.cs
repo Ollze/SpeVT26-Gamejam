@@ -20,6 +20,7 @@ public class PlayerMain : MonoBehaviour
     public Animator anim;
     public SpriteRenderer playerSprite;
     public Image manaSliderImage;
+    public float manaRegen = 20f;
 
     void Start()
     {
@@ -28,7 +29,7 @@ public class PlayerMain : MonoBehaviour
         coinGain = 1f;
         Mana.maxValue = MaxMana;
         Mana.value = CurrentMana;
-        coinText.text = coinGain.ToString();
+        coinText.text = ("Stardust: " +Currency.ToString());
        // anim = GetComponent<Animator>();
 
     }
@@ -74,7 +75,7 @@ public class PlayerMain : MonoBehaviour
             isshooting = false;
             if (CurrentMana < MaxMana)
             {
-                CurrentMana += 20f * Time.deltaTime;
+                CurrentMana += manaRegen * Time.deltaTime;
 
                 if (CurrentMana>= MaxMana)
                 {
@@ -89,7 +90,7 @@ public class PlayerMain : MonoBehaviour
         }
         else { manaSliderImage.color = new Color(1, 1, 1); }
 
-        coinText.text = coinGain.ToString();
+        coinText.text = ("Stardust :" + Currency.ToString());
 
     }
 
