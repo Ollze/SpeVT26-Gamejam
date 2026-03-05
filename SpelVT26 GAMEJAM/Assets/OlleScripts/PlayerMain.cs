@@ -61,29 +61,45 @@ public class PlayerMain : MonoBehaviour
         {
             anim.SetBool("isWalking", true);
         }
-        if (Mouse.current.leftButton.isPressed && CurrentMana > 0f && !manaOverheat)
-            
+        
+        
+        if (Mouse.current.leftButton.isPressed && CurrentMana > 0f && !manaOverheat && !shootParticles.isEmitting)        
         {
+            float manaDamage = 100f * Time.deltaTime;
+            //har testat i en timme for some reason funkar det inte om man gör * time.deltatime men jag förstår inte varför
+            //ok det funkade om man satte manadage till typ en kvadriljon
+
+            CurrentMana -= manaDamage;
+            isshooting = true;
             Shoot();
+            print("Current Mana = " + CurrentMana);
+            print("Mana going down by " + manaDamage);
             print("Left click pressed");
             if (CurrentMana <= 0f)
             { manaOverheat = true; CurrentMana = 0f; print("Mana overheat"); }
-            
+            shootParticles.Play();
         }
         else
         {
             isshooting = false;
+          
+        }
+        if (!Mouse.current.leftButton.isPressed || manaOverheat)//den här är for some reason true även när man inte skuter
+        {
             if (CurrentMana < MaxMana)
             {
+                print("Iecreasing mana");
+
                 CurrentMana += manaRegen * Time.deltaTime;
 
-                if (CurrentMana>= MaxMana)
+                if (CurrentMana >= MaxMana)
                 {
                     manaOverheat = false;
                     print("Manaoverheat" + manaOverheat);
                 }
             }
         }
+        
         if (manaOverheat)
         {
             manaSliderImage.color = new Color(1, 0.3f, 0.3f);
@@ -91,15 +107,14 @@ public class PlayerMain : MonoBehaviour
         else { manaSliderImage.color = new Color(1, 1, 1); }
 
         coinText.text = ("Stardust :" + Currency.ToString());
-
+        
     }
 
 
     public void Shoot()
-    {
-        shootParticles.Play();
-        CurrentMana += -15f * Time.deltaTime;
-        isshooting = true;
+    {        
+        
+        
     }
     
   

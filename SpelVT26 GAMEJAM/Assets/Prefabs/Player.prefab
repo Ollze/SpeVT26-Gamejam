@@ -133,7 +133,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698450646042244113}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.05
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -5393,6 +5393,7 @@ MonoBehaviour:
   health: 10
   maxHealth: 4
   healthBar: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!50 &5052031291572448950
 Rigidbody2D:
   serializedVersion: 5
