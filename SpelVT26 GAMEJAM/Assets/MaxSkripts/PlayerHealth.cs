@@ -7,6 +7,9 @@ public class PlayerHealth : MonoBehaviour
     public int health;
     public int maxHealth = 10;
     public UnityEngine.UI.Slider healthBar;
+    public GameManager gameManager;
+
+    private bool isDead;
      
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,9 +23,11 @@ public class PlayerHealth : MonoBehaviour
     {
         health -= amount;
         healthBar.value = health;
-        if (health <= 0)
+        if (health <= 0 && !isDead)
         {
+            isDead = true;
             Time.timeScale *= 0;
+            gameManager.gameOver();
         }
 
 
