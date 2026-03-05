@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     public void restart()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
