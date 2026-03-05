@@ -6,6 +6,7 @@ public class EnemyMovement : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float speed;
     [SerializeField] private float rotationSpeed;
+   
 
     [Header("Health Settings")]
     [SerializeField] private float maxHealth = 50f;
