@@ -37,6 +37,7 @@ public class ShopUppgrades : MonoBehaviour
     public TextMeshProUGUI HPcostText;
     public TextMeshProUGUI WPNcostText;
     public TextMeshProUGUI CoinCostText;
+    public Animator textAnimator;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -94,10 +95,12 @@ public class ShopUppgrades : MonoBehaviour
             dmgUpgradeCost += 10f;
             dmgUpgradeCost *= 1.2f;
             playerCode.Currency += -dmgUpgradeCost;
-        }
-        if (playerCode.Currency < dmgUpgradeCost)
-        {
             
+        }
+        else
+        {
+            print("Animated");
+            textAnimator.SetTrigger("Poor");
         }
         
     }
@@ -115,10 +118,11 @@ public class ShopUppgrades : MonoBehaviour
             spdUpgradeCost *= 1.3f;
             playerCode.Currency += -spdUpgradeCost;
         }
-        if (playerCode.Currency < spdUpgradeCost)
+        else
         {
-           
+            textAnimator.SetTrigger("Poor");
         }
+
     }
 
     public void ManaUppgrade()
@@ -137,10 +141,11 @@ public class ShopUppgrades : MonoBehaviour
             playerCode.Currency += -manaUpgradeCost;
             UpdateUI();
         }
-        if (playerCode.Currency < manaUpgradeCost)
+        else
         {
-            
+            textAnimator.SetTrigger("Poor");
         }
+
 
     }
 
@@ -157,10 +162,11 @@ public class ShopUppgrades : MonoBehaviour
             playerCode.Currency -= coinUpgradeCost;
             UpdateUI();
         }
-        if (playerCode.Currency < coinUpgradeCost)
+        else
         {
-            
+            textAnimator.SetTrigger("Poor");
         }
+
     }
 
     public void HealthUppgrade()
@@ -178,11 +184,12 @@ public class ShopUppgrades : MonoBehaviour
             playerCode.Currency += -hpUpgradeCost;
             UpdateUI();
         }
-        if (playerCode.Currency < hpUpgradeCost)
+        else
         {
-            
+            textAnimator.SetTrigger("Poor");
         }
-       
+
+
     }
 
     public void WeaponUppgrades()
@@ -201,11 +208,12 @@ public class ShopUppgrades : MonoBehaviour
             playerCode.Currency += -wpUpgradeCost;
             UpdateUI();
         }
-        if (playerCode.Currency < wpUpgradeCost)
+        else
         {
-            
+            textAnimator.SetTrigger("Poor");
         }
-       
+
+
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
