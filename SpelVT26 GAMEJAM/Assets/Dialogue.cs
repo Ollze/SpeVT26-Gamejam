@@ -8,8 +8,10 @@ public class Dialogue : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     public string[] lines;
     public float textSpeed;
-    private int index;
+    private int index = 0;
     public UnityEngine.UI.Image[] characterImages;
+    public int[] speakerIndex;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,11 +38,13 @@ public class Dialogue : MonoBehaviour
     void StartDialogue()
     {
         index = 0;
+        UpdatePortraits();
         StartCoroutine(TypeLine());
     }
 
     IEnumerator TypeLine()
     {
+        dialogueText.text = string.Empty;
         foreach (char c in lines[index].ToCharArray())
         {
             dialogueText.text += c;
@@ -53,13 +57,29 @@ public class Dialogue : MonoBehaviour
         if (index < lines.Length - 1)
         {
             index++;
-            dialogueText.text = string.Empty;
+           
+            UpdatePortraits();
             StartCoroutine(TypeLine());
 
         }
         else
         {
             dialogueText.gameObject.SetActive(false);
+        }
+    }
+
+    void UpdatePortraits()
+    {
+        for (int i = 0; i < characterImages.Length; i++)
+        {
+            if (i == speakerIndex[index])
+            {
+                characterImages[i].color = Color.white;
+            }
+            else
+            {
+                characterImages[i].color = new Color(1f, 1f, 1f, 0.3f);
+            }
         }
     }
 }
