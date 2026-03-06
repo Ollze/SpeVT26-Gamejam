@@ -63,17 +63,17 @@ public class EnemySpawner : MonoBehaviour
         if(enemyIndex == 1)
         { 
             enemyScript.enemy1 = true;
-            enemyAnimator.Play("Enemy1");
+            
         };
         if(enemyIndex == 2)
         {
             enemyScript.enemy2 = true;
-            enemyAnimator.Play("Enemy2");
+            
         };
         if (enemyIndex == 3)
         {
             enemyScript.enemy3 = true;
-            enemyAnimator.Play("Enemy3side");
+            
         };
 
         

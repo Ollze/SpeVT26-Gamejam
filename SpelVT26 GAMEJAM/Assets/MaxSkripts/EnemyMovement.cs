@@ -24,6 +24,7 @@ public class EnemyMovement : MonoBehaviour
     public bool enemy1;
     public bool enemy2;
     public bool enemy3;
+    public Animator[] enemyAnimation;
 
     private void Awake()
     {
@@ -40,17 +41,22 @@ public class EnemyMovement : MonoBehaviour
         if (enemy1 || !enemy1 && !enemy2)
         {
             maxHealth = 50f;
-            
+            enemyAnimation[0].enabled = true;
         }
 
         if (enemy2)
         {
             maxHealth = 100f;
             speed = 0.5f;
-            
+            enemyAnimation[1].enabled = true;
         }
-
-
+        if (enemy3)
+        {
+            maxHealth = 150f;
+            speed = 2;
+            enemyAnimation[2].enabled = true;
+        }
+       
 
 
 
