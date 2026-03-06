@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public float spawnRate = 3f;
     public int killCount;
     private float spawnTimer;
-    public Animator enemyAnimator;
+    
 
     private void Update()
     {
@@ -18,9 +18,10 @@ public class EnemySpawner : MonoBehaviour
         //dehär är progression systemet som gör allt svårare over time, ganska scuffed men it does the job;
         if (spawnTimer >= spawnRate)
         {
+            spawnTimer = 0f;
             if (killCount < 30) { SpawnEnemy(1); }
             
-            spawnTimer = 0f;
+            
             if(killCount > 10)
             {
                 SpawnEnemy(2);
@@ -56,26 +57,25 @@ public class EnemySpawner : MonoBehaviour
         GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
         //print("enemy spawned at bearing " + randomAngle);
         // vi kollar scripten på den spawnade enemien
+        Animator enemyAnimator = spawnedEnemy.GetComponent<Animator>(); ;
         EnemyMovement enemyScript = spawnedEnemy.GetComponent<EnemyMovement>();
         //Och väljer vilken sorts enemy det ska va
-        if(enemyIndex == 1) { enemyScript.enemy1 = true; };
-        if(enemyIndex == 2) { enemyScript.enemy2 = true; };
-        if (enemyIndex == 3) { enemyScript.enemy3 = true; };
-
-        if (enemyScript.enemy1 == true)
+        if(enemyIndex == 1)
+        { 
+            enemyScript.enemy1 = true;
+            enemyAnimator.Play("Enemy1");
+        };
+        if(enemyIndex == 2)
         {
-            enemyAnimator.Play("Enemy1"); 
-        }
-
-        if (enemyScript.enemy2 == true)
-        {
+            enemyScript.enemy2 = true;
             enemyAnimator.Play("Enemy2");
-        }
-
-        if (enemyScript.enemy3 == true)
+        };
+        if (enemyIndex == 3)
         {
+            enemyScript.enemy3 = true;
             enemyAnimator.Play("Enemy3side");
-        }
+        };
+
         
     }
 
