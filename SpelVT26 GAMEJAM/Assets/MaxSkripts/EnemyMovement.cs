@@ -23,6 +23,7 @@ public class EnemyMovement : MonoBehaviour
     [Header("Enemy Type")]
     public bool enemy1;
     public bool enemy2;
+    public bool enemy3;
 
     private void Awake()
     {
