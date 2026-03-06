@@ -88,13 +88,14 @@ public class ShopUppgrades : MonoBehaviour
     {
         if (playerCode.Currency >= dmgUpgradeCost)
         {
+            playerCode.Currency += -dmgUpgradeCost;
             upgradedDamageAmount += 0.5f;
             print("button pressed");
             
             playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
             dmgUpgradeCost += 10f;
             dmgUpgradeCost *= 1.2f;
-            playerCode.Currency += -dmgUpgradeCost;
+            dmgCostText.text = dmgUpgradeCost.ToString();
             
         }
         else
@@ -112,11 +113,11 @@ public class ShopUppgrades : MonoBehaviour
         {
             playerCode.moveSpeed += 1f;
             print("button pressed");
-            
+            playerCode.Currency += -spdUpgradeCost;
             playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
             spdUpgradeCost += 5f;
             spdUpgradeCost *= 1.3f;
-            playerCode.Currency += -spdUpgradeCost;
+            SPDCostText.text = spdUpgradeCost.ToString();
         }
         else
         {
@@ -131,14 +132,14 @@ public class ShopUppgrades : MonoBehaviour
         if (playerCode.Currency >= manaUpgradeCost)
         {
             playerCode.MaxMana += 100f;
-            
+            playerCode.Currency += -manaUpgradeCost;
             playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
             playerCode.manaRegen += 20f;
             playerCode.Mana.maxValue = playerCode.MaxMana;
             playerCode.Mana.value = playerCode.CurrentMana;
             manaUpgradeCost += 5f;
             manaUpgradeCost *= 1.5f;
-            playerCode.Currency += -manaUpgradeCost;
+            MANACostText.text = manaUpgradeCost.ToString();
             UpdateUI();
         }
         else
@@ -154,12 +155,13 @@ public class ShopUppgrades : MonoBehaviour
        
         if (playerCode.Currency >= coinUpgradeCost)
         {
+            playerCode.Currency -= coinUpgradeCost;
             playerCode.coinGain += 0.5f;
             
             playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
             coinUpgradeCost += 8;
             coinUpgradeCost *= 1.5f;
-            playerCode.Currency -= coinUpgradeCost;
+            CoinCostText.text = coinUpgradeCost.ToString();
             UpdateUI();
         }
         else
@@ -173,6 +175,7 @@ public class ShopUppgrades : MonoBehaviour
     {
         if (playerCode.Currency >= hpUpgradeCost)
         {
+            playerCode.Currency += -hpUpgradeCost;
             playerHealth.health += 1;
             playerHealth.maxHealth += 1;
             
@@ -181,7 +184,7 @@ public class ShopUppgrades : MonoBehaviour
             playerHealth.healthBar.value = playerHealth.health;
             hpUpgradeCost += 8f;
             hpUpgradeCost *= 1.3f;
-            playerCode.Currency += -hpUpgradeCost;
+            HPcostText.text = hpUpgradeCost.ToString();
             UpdateUI();
         }
         else
@@ -197,6 +200,7 @@ public class ShopUppgrades : MonoBehaviour
 
         if (playerCode.Currency >= wpUpgradeCost)
         {
+            playerCode.Currency += -wpUpgradeCost;
             var shape = particles.shape;
             shape.radius = 2f;
             shape.angle = 40f;
@@ -205,7 +209,7 @@ public class ShopUppgrades : MonoBehaviour
             
             wpUpgradeCost += 15f;
             wpUpgradeCost *= 1.8f;
-            playerCode.Currency += -wpUpgradeCost;
+            WPNcostText.text = wpUpgradeCost.ToString();
             UpdateUI();
         }
         else

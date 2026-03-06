@@ -34,6 +34,7 @@ public class EnemySpawner : MonoBehaviour
                         
                         if(killCount > 50)
                         {
+                            if (killCount > 100) { SpawnEnemy(3); }
                             spawnRate = 1.5f;
                             if(killCount > 200 && spawnRate >= 0.5f)
                             {

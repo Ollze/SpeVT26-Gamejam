@@ -38,10 +38,12 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         
-        if (enemy1 || !enemy1 && !enemy2)
+        if (enemy1)
         {
             maxHealth = 50f;
             enemyAnimation[0].enabled = true;
+            enemyAnimation[1].enabled = false;
+            enemyAnimation[2].enabled = false;
         }
 
         if (enemy2)
@@ -49,12 +51,16 @@ public class EnemyMovement : MonoBehaviour
             maxHealth = 100f;
             speed = 0.5f;
             enemyAnimation[1].enabled = true;
+            enemyAnimation[0].enabled = false;
+            enemyAnimation[2].enabled = false;
         }
         if (enemy3)
         {
             maxHealth = 150f;
             speed = 2;
             enemyAnimation[2].enabled = true;
+            enemyAnimation[0].enabled = false;
+            enemyAnimation[1].enabled = false;
         }
        
 
