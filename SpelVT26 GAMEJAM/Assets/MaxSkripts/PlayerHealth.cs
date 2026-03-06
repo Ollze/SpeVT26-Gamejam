@@ -10,7 +10,8 @@ public class PlayerHealth : MonoBehaviour
     public GameManager gameManager;
 
     private bool isDead;
-     
+    private float healTimer = 0;
+    private bool healTime;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,13 +19,29 @@ public class PlayerHealth : MonoBehaviour
         healthBar.maxValue = maxHealth;
         healthBar.value = health;
     }
-
-   public void TakeDamage(int amount)
+    private void Update()
     {
+        if (healTimer > 10f && healTime)
+        {
+            health += 1;
+            healthBar.value = health;
+            healTime = false;
+            healTimer = 0f;
+
+        }
+        else if (healTime) { healTimer += Time.deltaTime; }
+        if(health > maxHealth && healTime) { healTime = false; }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        healTime = true;
         health -= amount;
         healthBar.value = health;
-        if (health <= 0 && !isDead)
+        
+        if (health < 1 && !isDead)
         {
+            print("You just died");
             isDead = true;
             gameManager.gameOver();
             Time.timeScale *= 0;
