@@ -18,9 +18,10 @@ public class EnemySpawner : MonoBehaviour
         //dehär är progression systemet som gör allt svårare over time, ganska scuffed men it does the job;
         if (spawnTimer >= spawnRate)
         {
+            spawnTimer = 0f;
             if (killCount < 30) { SpawnEnemy(1); }
             
-            spawnTimer = 0f;
+            
             if(killCount > 10)
             {
                 SpawnEnemy(2);
