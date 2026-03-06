@@ -43,8 +43,8 @@ public class PlayerHealth : MonoBehaviour
         {
             print("You just died");
             isDead = true;
-            Time.timeScale *= 0;
             gameManager.gameOver();
+            Time.timeScale *= 0;
         }
 
 
