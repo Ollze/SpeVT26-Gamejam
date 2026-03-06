@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -9,15 +10,23 @@ public class EnemySpawner : MonoBehaviour
     public float spawnRate = 3f;
     public int killCount;
     private float spawnTimer;
-    
+
+    private float timeAlive;
+    public TextMeshProUGUI statsText;
 
     private void Update()
     {
+        timeAlive += Time.deltaTime;
+        int secondsAlive = (int)timeAlive;
+        statsText.text = "Time Survived: " + secondsAlive.ToString() + " Seconds " + " | Kills: " + killCount.ToString();
         spawnTimer += Time.deltaTime;
         
         //dehär är progression systemet som gör allt svårare over time, ganska scuffed men it does the job;
         if (spawnTimer >= spawnRate)
         {
+
+
+
             spawnTimer = 0f;
             if (killCount < 30) { SpawnEnemy(1); }
             
