@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.24, y: 4.75, z: 0}
-  m_LocalScale: {x: 4.0769696, y: 2.103744, z: 1}
+  m_LocalScale: {x: 10, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3528305888037657488}
@@ -71,7 +71,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.03413576, y: -0.06625041}
+  m_Offset: {x: 0.018107727, y: 0.05360049}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -81,7 +81,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.0763463, y: 1.7854395}
+  m_Size: {x: 0.52337956, y: 1.0642822}
   m_EdgeRadius: 0
 --- !u!114 &1013593963307794613
 MonoBehaviour:
@@ -101,12 +101,21 @@ MonoBehaviour:
   particles: {fileID: 0}
   uiPanel: {fileID: 0}
   eText: {fileID: 0}
+  playerInside: 0
+  shopOpen: 0
   menuAudio: {fileID: 1142362221859807621}
   dmgStat: {fileID: 0}
   spdStat: {fileID: 0}
   hpStat: {fileID: 0}
   manaStat: {fileID: 0}
   coinStat: {fileID: 0}
+  dmgCostText: {fileID: 0}
+  SPDCostText: {fileID: 0}
+  MANACostText: {fileID: 0}
+  HPcostText: {fileID: 0}
+  WPNcostText: {fileID: 0}
+  CoinCostText: {fileID: 0}
+  textAnimator: {fileID: 0}
 --- !u!50 &8732632179040832700
 Rigidbody2D:
   serializedVersion: 5
@@ -159,7 +168,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: b53af7e99112baa45904458488fa9f59, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.027
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -369,7 +378,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.2116121, y: 0.16752625}
+  m_Offset: {x: 0.07244909, y: 0.107884884}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -379,5 +388,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.5767758, y: 2.4649477}
+  m_Size: {x: 1.3839498, y: 1.3914032}
   m_EdgeRadius: 0
