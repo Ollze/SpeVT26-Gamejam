@@ -33,7 +33,11 @@ public class PlayerAwarement : MonoBehaviour
 
         if (enemyToPlayerVector.x < 0f)
         {
-            transform.rotation = new Quaternion(0, 0, -1f, 0);
+            transform.rotation = new Quaternion(0, -1, 0, 0);
+        }
+        else
+        {
+            transform.rotation = new Quaternion(0, 0, 0, 0);
         }
     }
 }
