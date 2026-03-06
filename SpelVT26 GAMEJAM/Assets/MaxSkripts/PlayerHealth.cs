@@ -26,8 +26,8 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0 && !isDead)
         {
             isDead = true;
-            Time.timeScale *= 0;
             gameManager.gameOver();
+            Time.timeScale *= 0;
         }
 
 
