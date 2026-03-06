@@ -68,7 +68,7 @@ public class ShopUppgrades : MonoBehaviour
             menuAudio.StopMenuOpenSound();
 
         }
-        else if (Keyboard.current.eKey.wasPressedThisFrame && !shopOpen)
+        else if (Keyboard.current.eKey.wasPressedThisFrame && !shopOpen && playerInside)
         {
             uiPanel.gameObject.SetActive(true);
             Time.timeScale = 0f;
