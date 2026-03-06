@@ -1599,6 +1599,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 915968999}
+    - target: {fileID: 7192150193919733420, guid: 47f9d6c33ac27df4e85f6da0014b2a48, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1913396937}
     - target: {fileID: 8159833627456886110, guid: 47f9d6c33ac27df4e85f6da0014b2a48, type: 3}
       propertyPath: Mana
       value: 
@@ -2172,6 +2176,10 @@ PrefabInstance:
     - target: {fileID: 6507135351458364101, guid: 408969615f1c5b8469f6193d6404ee30, type: 3}
       propertyPath: m_Color.r
       value: 0.32156864
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793156767211703281, guid: 408969615f1c5b8469f6193d6404ee30, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7013066549733412271, guid: 408969615f1c5b8469f6193d6404ee30, type: 3}
       propertyPath: m_Color.b
