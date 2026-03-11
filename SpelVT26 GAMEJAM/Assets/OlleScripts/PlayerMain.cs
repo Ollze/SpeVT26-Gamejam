@@ -21,6 +21,7 @@ public class PlayerMain : MonoBehaviour
     public SpriteRenderer playerSprite;
     public Image manaSliderImage;
     public float manaRegen = 20f;
+    public Animator manaAnimator;
 
     void Start()
     {
@@ -84,6 +85,7 @@ public class PlayerMain : MonoBehaviour
             isshooting = false;
           
         }
+        
         if (!Mouse.current.leftButton.isPressed || manaOverheat)//den här är for some reason true även när man inte skuter
         {
             if (CurrentMana < MaxMana)
@@ -91,6 +93,7 @@ public class PlayerMain : MonoBehaviour
                 //print("Iecreasing mana");
 
                 CurrentMana += manaRegen * Time.deltaTime;
+                
 
                 if (CurrentMana >= MaxMana)
                 {
@@ -103,6 +106,8 @@ public class PlayerMain : MonoBehaviour
         if (manaOverheat)
         {
             manaSliderImage.color = new Color(1, 0.3f, 0.3f);
+
+            manaAnimator.SetTrigger("ManaOut");
         }
         else { manaSliderImage.color = new Color(1, 1, 1); }
 
