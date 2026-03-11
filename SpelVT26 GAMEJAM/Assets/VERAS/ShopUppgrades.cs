@@ -43,6 +43,7 @@ public class ShopUppgrades : MonoBehaviour
     public TextMeshProUGUI stockText;
     public TextMeshProUGUI killCount;
     public EnemySpawner enemySpawn;
+    public AudioSource moneySound;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -113,8 +114,9 @@ public class ShopUppgrades : MonoBehaviour
             playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
             dmgUpgradeCost += 10f;
             dmgUpgradeCost *= 1.2f;
-            dmgCostText.text = dmgUpgradeCost.ToString();
-            
+            dmgCostText.text = dmgUpgradeCost.ToString("F0");
+            PlayMoneyEffect();
+
         }
         else
         {
@@ -135,7 +137,8 @@ public class ShopUppgrades : MonoBehaviour
             playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
             spdUpgradeCost += 5f;
             spdUpgradeCost *= 1.3f;
-            SPDCostText.text = spdUpgradeCost.ToString();
+            SPDCostText.text = spdUpgradeCost.ToString("F0");
+            PlayMoneyEffect();
         }
         else
         {
@@ -157,8 +160,9 @@ public class ShopUppgrades : MonoBehaviour
             playerCode.Mana.value = playerCode.CurrentMana;
             manaUpgradeCost += 5f;
             manaUpgradeCost *= 1.5f;
-            MANACostText.text = manaUpgradeCost.ToString();
+            MANACostText.text = manaUpgradeCost.ToString("F0");
             UpdateUI();
+            PlayMoneyEffect();
         }
         else
         {
@@ -179,8 +183,9 @@ public class ShopUppgrades : MonoBehaviour
             playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
             coinUpgradeCost += 8;
             coinUpgradeCost *= 1.5f;
-            CoinCostText.text = coinUpgradeCost.ToString();
+            CoinCostText.text = coinUpgradeCost.ToString("F0");
             UpdateUI();
+            PlayMoneyEffect();
         }
         else
         {
@@ -202,8 +207,9 @@ public class ShopUppgrades : MonoBehaviour
             playerHealth.healthBar.value = playerHealth.health;
             hpUpgradeCost += 8f;
             hpUpgradeCost *= 1.3f;
-            HPcostText.text = hpUpgradeCost.ToString();
+            HPcostText.text = hpUpgradeCost.ToString("F0");
             UpdateUI();
+            PlayMoneyEffect();
         }
         else
         {
@@ -227,9 +233,10 @@ public class ShopUppgrades : MonoBehaviour
             
             wpUpgradeCost += 15f;
             wpUpgradeCost *= 1.8f;
-            WPNcostText.text = wpUpgradeCost.ToString();
+            WPNcostText.text = wpUpgradeCost.ToString("F0");
             UpdateUI();
             upgradedWPN = true;
+            PlayMoneyEffect();
         }
         if (playerCode.Currency >= wpUpgradeCost && upgradedWPN == true && maxWPN == false)
         {
@@ -241,6 +248,7 @@ public class ShopUppgrades : MonoBehaviour
             var emission = particles.emission; emission.rateOverTime = 200f;
             UpdateUI();
             maxWPN = true;
+            PlayMoneyEffect();
         }
         if (maxWPN == true)
         {
@@ -294,8 +302,11 @@ public class ShopUppgrades : MonoBehaviour
         dmgCostText.text = (dmgUpgradeCost.ToString("F0"));
         killCount.text = ("Kills : " + enemySpawn.killCount.ToString());
 
-}
+    }
 
-
+    public void PlayMoneyEffect()
+    {
+        moneySound.Play();
+    }
     
 }

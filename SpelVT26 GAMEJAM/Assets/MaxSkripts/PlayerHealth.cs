@@ -25,9 +25,9 @@ public class PlayerHealth : MonoBehaviour
         {
             health += 1;
             healthBar.value = health;
-            healTime = false;
+            
             healTimer = 0f;
-
+            
         }
         else if (healTime) { healTimer += Time.deltaTime; }
         if(health > maxHealth && healTime) { healTime = false; }
