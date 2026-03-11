@@ -200,7 +200,7 @@ public class ShopUppgrades : MonoBehaviour
         {
             playerCode.Currency += -hpUpgradeCost;
             playerHealth.health = playerHealth.maxHealth;
-           
+            playerHealth.maxHealth += 1;
             
             playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString("F0"));
             playerHealth.healthBar.maxValue = playerHealth.maxHealth;
