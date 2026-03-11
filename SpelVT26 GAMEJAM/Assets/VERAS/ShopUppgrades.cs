@@ -41,6 +41,8 @@ public class ShopUppgrades : MonoBehaviour
     private bool upgradedWPN = false;
     private bool maxWPN = false;
     public TextMeshProUGUI stockText;
+    public TextMeshProUGUI killCount;
+    public EnemySpawner enemySpawn;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -57,6 +59,7 @@ public class ShopUppgrades : MonoBehaviour
         coinStat.text = ("coin gain: " + playerCode.coinGain.ToString());
         UpdateUI();
         stockText.gameObject.SetActive(false);
+
        
     }
 
@@ -95,6 +98,7 @@ public class ShopUppgrades : MonoBehaviour
         hpStat.text = ("HP: " + playerHealth.health.ToString());
         manaStat.text = ("Max mana: " + playerCode.MaxMana.ToString());
         coinStat.text = ("coin gain: " + playerCode.coinGain.ToString());
+        UpdateUI();
     }
 
 
@@ -288,7 +292,9 @@ public class ShopUppgrades : MonoBehaviour
         HPcostText.text = (hpUpgradeCost.ToString());
         WPNcostText.text = (wpUpgradeCost.ToString());
         dmgCostText.text = (dmgUpgradeCost.ToString());
-    }
+        killCount.text = ("Kills : " + enemySpawn.killCount.ToString());
+
+}
 
 
     
