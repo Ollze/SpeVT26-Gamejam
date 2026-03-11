@@ -66,6 +66,8 @@ public class ShopUppgrades : MonoBehaviour
             uiPanel.gameObject.SetActive(false);
             print("Pressed E to turn OFF shop");
             menuAudio.StopMenuOpenSound();
+            menuAudio.PlaylobbyAudio();
+            
 
         }
         else if (Keyboard.current.eKey.wasPressedThisFrame && !shopOpen && playerInside)
@@ -75,6 +77,8 @@ public class ShopUppgrades : MonoBehaviour
             shopOpen = true;
             print("shopOpen = " + shopOpen);
             menuAudio.PlayMenuOpenSound();
+            menuAudio.StoplobbyAudio();
+           
         }
         dmgStat.text = ("DMG per bullet: " + upgradedDamageAmount.ToString());
         spdStat.text = ("MoveSpeed: " + playerCode.moveSpeed.ToString());

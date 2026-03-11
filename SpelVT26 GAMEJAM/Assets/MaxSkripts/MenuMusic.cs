@@ -3,6 +3,7 @@ using UnityEngine;
 public class MenuMusic : MonoBehaviour
 {
     private AudioSource audioSource;
+    public AudioSource lobbyAudio;
 
     void Awake()
     {
@@ -18,4 +19,15 @@ public class MenuMusic : MonoBehaviour
     {
         audioSource.Stop();
     }
+
+    public void PlaylobbyAudio()
+    {
+        lobbyAudio.Play();
+    }
+
+    public void StoplobbyAudio()
+    {
+        lobbyAudio.Stop();
+    }
+    
 }
