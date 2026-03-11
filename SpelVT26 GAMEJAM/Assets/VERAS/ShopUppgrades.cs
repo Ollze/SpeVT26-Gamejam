@@ -194,10 +194,10 @@ public class ShopUppgrades : MonoBehaviour
         if (playerCode.Currency >= hpUpgradeCost)
         {
             playerCode.Currency += -hpUpgradeCost;
-            playerHealth.health += 1;
-            playerHealth.maxHealth += 1;
+            playerHealth.health = playerHealth.maxHealth;
+           
             
-            playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
+            playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString("F0"));
             playerHealth.healthBar.maxValue = playerHealth.maxHealth;
             playerHealth.healthBar.value = playerHealth.health;
             hpUpgradeCost += 8f;
@@ -222,7 +222,7 @@ public class ShopUppgrades : MonoBehaviour
             var shape = particles.shape;
             shape.radius = 1f;
             shape.angle = 40f;
-            playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
+            playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString("F0"));
             var emission = particles.emission; emission.rateOverTime = 175f;
             
             wpUpgradeCost += 15f;
@@ -237,7 +237,7 @@ public class ShopUppgrades : MonoBehaviour
             var shape = particles.shape;
             shape.radius = 2f;
             shape.angle = 50f;
-            playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
+            playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString("F0"));
             var emission = particles.emission; emission.rateOverTime = 200f;
             UpdateUI();
             maxWPN = true;
@@ -285,13 +285,13 @@ public class ShopUppgrades : MonoBehaviour
         hpStat.text = ("HP: " + playerHealth.health.ToString());
         manaStat.text = ("Max mana: " + playerCode.MaxMana.ToString());
         coinStat.text = ("coin gain: " + playerCode.coinGain.ToString());
-        playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
-        CoinCostText.text = (coinUpgradeCost.ToString());
-        SPDCostText.text = (spdUpgradeCost.ToString());
-        MANACostText.text = (manaUpgradeCost.ToString());
-        HPcostText.text = (hpUpgradeCost.ToString());
-        WPNcostText.text = (wpUpgradeCost.ToString());
-        dmgCostText.text = (dmgUpgradeCost.ToString());
+        playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString("F0"));
+        CoinCostText.text = (coinUpgradeCost.ToString("F0"));
+        SPDCostText.text = (spdUpgradeCost.ToString("F0"));
+        MANACostText.text = (manaUpgradeCost.ToString("F0"));
+        HPcostText.text = (hpUpgradeCost.ToString("F0"));
+        WPNcostText.text = (wpUpgradeCost.ToString("F0"));
+        dmgCostText.text = (dmgUpgradeCost.ToString("F0"));
         killCount.text = ("Kills : " + enemySpawn.killCount.ToString());
 
 }
