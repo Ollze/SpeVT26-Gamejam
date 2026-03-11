@@ -22,6 +22,7 @@ public class PlayerMain : MonoBehaviour
     public Image manaSliderImage;
     public float manaRegen = 20f;
     public Animator manaAnimator;
+    public AudioSource shootAudio;
 
     void Start()
     {
@@ -79,11 +80,12 @@ public class PlayerMain : MonoBehaviour
             if (CurrentMana <= 0f)
             { manaOverheat = true; CurrentMana = 0f; print("Mana overheat"); }
             shootParticles.Play();
+            shootAudio.Play();
         }
         else
         {
             isshooting = false;
-          
+            shootAudio.Stop();
         }
         
         if (!Mouse.current.leftButton.isPressed || manaOverheat)//den här är for some reason true även när man inte skuter

@@ -204,6 +204,7 @@ MonoBehaviour:
   - {fileID: 7013856637318334423}
   - {fileID: 6973320234355370194}
   - {fileID: 8392505638305037306}
+  enemyDied: {fileID: 0}
 --- !u!114 &7993725082109915540
 MonoBehaviour:
   m_ObjectHideFlags: 0
