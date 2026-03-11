@@ -38,6 +38,9 @@ public class ShopUppgrades : MonoBehaviour
     public TextMeshProUGUI WPNcostText;
     public TextMeshProUGUI CoinCostText;
     public Animator textAnimator;
+    private bool upgradedWPN = false;
+    private bool maxWPN = false;
+    public TextMeshProUGUI stockText;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -53,6 +56,7 @@ public class ShopUppgrades : MonoBehaviour
         manaStat.text = ( "Max mana: " + playerCode.MaxMana.ToString());
         coinStat.text = ("coin gain: " + playerCode.coinGain.ToString());
         UpdateUI();
+        stockText.gameObject.SetActive(false);
        
     }
 
@@ -66,6 +70,9 @@ public class ShopUppgrades : MonoBehaviour
             uiPanel.gameObject.SetActive(false);
             print("Pressed E to turn OFF shop");
             menuAudio.StopMenuOpenSound();
+            menuAudio.PlaylobbyAudio();
+            stockText.gameObject.SetActive(false);
+
 
         }
         else if (Keyboard.current.eKey.wasPressedThisFrame && !shopOpen && playerInside)
@@ -75,6 +82,13 @@ public class ShopUppgrades : MonoBehaviour
             shopOpen = true;
             print("shopOpen = " + shopOpen);
             menuAudio.PlayMenuOpenSound();
+            menuAudio.StoplobbyAudio();
+            stockText.gameObject.SetActive(false);
+            if (maxWPN == true)
+            {
+                stockText.gameObject.SetActive(true);
+            }
+
         }
         dmgStat.text = ("DMG per bullet: " + upgradedDamageAmount.ToString());
         spdStat.text = ("MoveSpeed: " + playerCode.moveSpeed.ToString());
@@ -198,20 +212,38 @@ public class ShopUppgrades : MonoBehaviour
     public void WeaponUppgrades()
     {
 
-        if (playerCode.Currency >= wpUpgradeCost)
+        if (playerCode.Currency >= wpUpgradeCost && upgradedWPN == false && maxWPN == false)
         {
             playerCode.Currency += -wpUpgradeCost;
             var shape = particles.shape;
-            shape.radius = 2f;
+            shape.radius = 1f;
             shape.angle = 40f;
             playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
-            var emission = particles.emission; emission.rateOverTime = 200f;
+            var emission = particles.emission; emission.rateOverTime = 175f;
             
             wpUpgradeCost += 15f;
             wpUpgradeCost *= 1.8f;
             WPNcostText.text = wpUpgradeCost.ToString();
             UpdateUI();
+            upgradedWPN = true;
         }
+        if (playerCode.Currency >= wpUpgradeCost && upgradedWPN == true && maxWPN == false)
+        {
+            playerCode.Currency += -wpUpgradeCost;
+            var shape = particles.shape;
+            shape.radius = 2f;
+            shape.angle = 50f;
+            playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString());
+            var emission = particles.emission; emission.rateOverTime = 200f;
+            UpdateUI();
+            maxWPN = true;
+        }
+        if (maxWPN == true)
+        {
+            stockText.gameObject.SetActive(true);
+            WPNcostText.gameObject.SetActive(false);
+        }
+
         else
         {
             textAnimator.SetTrigger("Poor");
