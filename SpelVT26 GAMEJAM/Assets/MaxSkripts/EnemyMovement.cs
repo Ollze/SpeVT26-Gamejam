@@ -25,6 +25,7 @@ public class EnemyMovement : MonoBehaviour
     public bool enemy2;
     public bool enemy3;
     public Animator[] enemyAnimation;
+    public AudioSource enemyDied;
 
     private void Awake()
     {
@@ -137,6 +138,7 @@ public class EnemyMovement : MonoBehaviour
         spawnerScript.killCount += 1;
         print("You have killed " + spawnerScript.killCount + " enemies");
         Destroy(gameObject);
+        enemyDied.Play();
     }
 
     private void OnParticleCollision(GameObject other)
