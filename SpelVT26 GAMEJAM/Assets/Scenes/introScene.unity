@@ -1494,11 +1494,12 @@ MonoBehaviour:
   - I will serve as commanded. I swore to only use my powers to stop evil.
   - If you find yourself in a pickle, just swing by my shop!
   - It is located on the big cloud, but if you ever loose it, follow the pink arrow!
+  - Enemies drop stardust! Make sure to pick them up, i exchange upgrades for them!
   textSpeed: 0.02
   characterImages:
   - {fileID: 456528002}
   - {fileID: 67164606}
-  speakerIndex: 0000000001000000000000000000000000000000010000000000000000000000010000000000000000000000
+  speakerIndex: 000000000100000000000000000000000000000001000000000000000000000001000000000000000000000000000000
   characterAnimators:
   - {fileID: 456528004}
   - {fileID: 67164608}

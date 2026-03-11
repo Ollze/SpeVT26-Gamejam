@@ -84,6 +84,10 @@ public class ShopUppgrades : MonoBehaviour
             menuAudio.PlayMenuOpenSound();
             menuAudio.StoplobbyAudio();
             stockText.gameObject.SetActive(false);
+            if (maxWPN == true)
+            {
+                stockText.gameObject.SetActive(true);
+            }
 
         }
         dmgStat.text = ("DMG per bullet: " + upgradedDamageAmount.ToString());
