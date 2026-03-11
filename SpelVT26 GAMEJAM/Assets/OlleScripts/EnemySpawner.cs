@@ -7,9 +7,11 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
     public Transform enemySpawnPoint;
     //public Vector3 spawnPoint;
-    public float spawnRate = 3f;
+    private float spawnRate = 3f;
     public int killCount;
     private float spawnTimer;
+    private int enemyCount;
+    private int maxEnemies = 10;
 
     private float timeAlive;
     public TextMeshProUGUI statsText;
@@ -21,40 +23,50 @@ public class EnemySpawner : MonoBehaviour
         statsText.text = "Time Survived: " + secondsAlive.ToString() + " Seconds " + " | Kills: " + killCount.ToString();
         spawnTimer += Time.deltaTime;
         
-        //dehär är progression systemet som gör allt svårare over time, ganska scuffed men it does the job;
+        //dehär är progression systemet som gör allt svårare over time, ganska scuffed men it does the job; // olle
         if (spawnTimer >= spawnRate)
         {
-
-
-
-            spawnTimer = 0f;
-            if (killCount < 30) { SpawnEnemy(1); }
-            
-            
-            if(killCount > 10)
+            spawnTimer = 0f;            
+            if(enemyCount < maxEnemies)
             {
-                SpawnEnemy(2);
-                if (killCount > 20)
+                if (killCount < 50) { SpawnEnemy(1); }
+                if (killCount > 15)
                 {
-                    spawnRate = 2f;
-                    if(killCount > 30)
+                    
+                    SpawnEnemy(2);
+                    if (killCount > 20)
                     {
-                        SpawnEnemy(2);
-                        
-                        if(killCount > 50)
+                        maxEnemies = 15;
+                        spawnRate = 2.5f;
+                        if (killCount > 30)
                         {
-                            if (killCount > 100) { SpawnEnemy(3); }
-                            spawnRate = 1.5f;
-                            if(killCount > 200 && spawnRate >= 0.5f)
+                            SpawnEnemy(2);
+                            if (killCount > 50) { spawnRate = 2; }
+
+                            if (killCount > 70)
                             {
-                                
-                                spawnRate -= 0.1f;
+                                maxEnemies = 25;
+                                if (killCount > 100) { SpawnEnemy(3); maxEnemies = 35; }
+                                spawnRate = 1.5f;
+                                if (killCount > 200)
+                                {
+                                    spawnRate = 1.3f;
+                                }//och här gör vi de omöjligt attt spela om man får massa kills
+                                if (killCount > 300) { SpawnEnemy(3); maxEnemies = 50; spawnRate = 1f; }
+                                if (killCount > 400) { SpawnEnemy(3); SpawnEnemy(2); maxEnemies = 100;  spawnRate = 0.5f; }
+                                if (killCount > 500) { SpawnEnemy(3); SpawnEnemy(3); maxEnemies = 200;  spawnRate = 0.3f; }
+                                if (killCount > 800) { SpawnEnemy(3); SpawnEnemy(3); maxEnemies = 200;  spawnRate = 0.1f; }
                             }
                         }
                     }
                 }
             }
+            EnemyMovement[] array = GameObject.FindObjectsByType<EnemyMovement>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+            enemyCount = array.Length;
+            print("Enemies On the Map = " + array.Length + "| Current Spawnrate = " + spawnRate);
         }
+        
+        
     }
     private void SpawnEnemy(int enemyIndex)
     {
