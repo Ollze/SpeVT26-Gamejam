@@ -1,0 +1,1 @@
+Vi har alla jobbat i typ varandras koder så allt är lite av en emalgumation av alla våra skripts
