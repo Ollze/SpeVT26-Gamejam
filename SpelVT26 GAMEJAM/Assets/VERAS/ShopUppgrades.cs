@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
 using TMPro;
+using UnityEditor.Rendering.Universal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -40,6 +41,7 @@ public class ShopUppgrades : MonoBehaviour
     public Animator textAnimator;
     private bool upgradedWPN = false;
     private bool maxWPN = false;
+    private bool upgradedWPN2 = false;
     public TextMeshProUGUI stockText;
     public TextMeshProUGUI killCount;
     public EnemySpawner enemySpawn;
@@ -222,7 +224,7 @@ public class ShopUppgrades : MonoBehaviour
     public void WeaponUppgrades()
     {
 
-        if (playerCode.Currency >= wpUpgradeCost && upgradedWPN == false && maxWPN == false)
+        if (playerCode.Currency >= wpUpgradeCost && upgradedWPN == false && maxWPN == false && upgradedWPN2 == false)
         {
             playerCode.Currency += -wpUpgradeCost;
             var shape = particles.shape;
@@ -246,10 +248,28 @@ public class ShopUppgrades : MonoBehaviour
             shape.angle = 50f;
             playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString("F0"));
             var emission = particles.emission; emission.rateOverTime = 200f;
+            wpUpgradeCost += 15f;
+            wpUpgradeCost *= 1.8f;
             UpdateUI();
+            
+            PlayMoneyEffect();
+            upgradedWPN2 = true;
+            upgradedWPN = false;
+        }
+        if (playerCode.Currency >= wpUpgradeCost && upgradedWPN2 == true && maxWPN == false && upgradedWPN == false)
+        {
+            playerCode.Currency += -wpUpgradeCost;
             maxWPN = true;
             PlayMoneyEffect();
+            var shape = particles.shape;
+            shape.radius = 3f;
+            shape.angle = 70;
+            playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString("F0"));
+            var emission = particles.emission; emission.rateOverTime = 400f;
+            UpdateUI();
         }
+
+
         if (maxWPN == true)
         {
             stockText.gameObject.SetActive(true);
@@ -293,7 +313,7 @@ public class ShopUppgrades : MonoBehaviour
         hpStat.text = ("HP: " + playerHealth.health.ToString());
         manaStat.text = ("Max mana: " + playerCode.MaxMana.ToString());
         coinStat.text = ("coin gain: " + playerCode.coinGain.ToString());
-        playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString("F0"));
+        playerCode.coinText.text = ("Stardust: " + playerCode.Currency.ToString("F1"));
         CoinCostText.text = (coinUpgradeCost.ToString("F0"));
         SPDCostText.text = (spdUpgradeCost.ToString("F0"));
         MANACostText.text = (manaUpgradeCost.ToString("F0"));

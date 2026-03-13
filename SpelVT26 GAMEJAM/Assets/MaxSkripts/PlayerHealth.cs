@@ -25,6 +25,7 @@ public class PlayerHealth : MonoBehaviour
         {
             health += 1;
             healthBar.value = health;
+            healthBar.maxValue = maxHealth;
             
             healTimer = 0f;
             
@@ -38,7 +39,8 @@ public class PlayerHealth : MonoBehaviour
         healTime = true;
         health -= amount;
         healthBar.value = health;
-        
+        healthBar.maxValue = maxHealth;
+
         if (health < 1 && !isDead)
         {
             print("You just died");
