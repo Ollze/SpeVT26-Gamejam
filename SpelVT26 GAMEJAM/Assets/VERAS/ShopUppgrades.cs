@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
 using TMPro;
-using UnityEditor.Rendering.Universal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
